@@ -136,6 +136,7 @@ func (x *AddCardResponse) GetSuccess() bool {
 type AddFundsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Amount        int64                  `protobuf:"varint,2,opt,name=amount,proto3" json:"amount,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -175,6 +176,13 @@ func (x *AddFundsRequest) GetEmail() string {
 		return x.Email
 	}
 	return ""
+}
+
+func (x *AddFundsRequest) GetAmount() int64 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
 }
 
 type AddFundsResponse struct {
@@ -232,6 +240,7 @@ func (x *AddFundsResponse) GetSuccess() bool {
 type PayRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Amount        int64                  `protobuf:"varint,2,opt,name=amount,proto3" json:"amount,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -271,6 +280,13 @@ func (x *PayRequest) GetEmail() string {
 		return x.Email
 	}
 	return ""
+}
+
+func (x *PayRequest) GetAmount() int64 {
+	if x != nil {
+		return x.Amount
+	}
+	return 0
 }
 
 type PayResponse struct {
@@ -337,15 +353,17 @@ const file_payments_payments_proto_rawDesc = "" +
 	"cardNumber\x12\x10\n" +
 	"\x03cvc\x18\x04 \x01(\tR\x03cvc\"+\n" +
 	"\x0fAddCardResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"'\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"?\n" +
 	"\x0fAddFundsRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\"F\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x16\n" +
+	"\x06amount\x18\x02 \x01(\x03R\x06amount\"F\n" +
 	"\x10AddFundsResponse\x12\x18\n" +
 	"\abalance\x18\x01 \x01(\x03R\abalance\x12\x18\n" +
-	"\asuccess\x18\x02 \x01(\bR\asuccess\"\"\n" +
+	"\asuccess\x18\x02 \x01(\bR\asuccess\":\n" +
 	"\n" +
 	"PayRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\"A\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x16\n" +
+	"\x06amount\x18\x02 \x01(\x03R\x06amount\"A\n" +
 	"\vPayResponse\x12\x18\n" +
 	"\abalance\x18\x01 \x01(\x03R\abalance\x12\x18\n" +
 	"\asuccess\x18\x02 \x01(\bR\asuccess2\xc0\x01\n" +

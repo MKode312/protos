@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package payments;
+
+option go_package = "mkode.payments.v1;paymentsv1";
+
+service Payment {
+    rpc AddCard (AddCardRequest) returns (AddCardResponse);
+    rpc AddFunds (AddFundsRequest) returns (AddFundsResponse);
+    rpc Pay (PayRequest) returns (PayResponse);
+}
+
+message AddCardRequest {
+    string email = 1;
+    string phone_number = 2;
+    string card_number = 3;
+    string cvc = 4;
+}
+
+message AddCardResponse {
+    bool success = 1;
+}
+
+message AddFundsRequest {
+    string email = 1;
+}
+
+message AddFundsResponse {
+    int64 balance = 1;
+    bool success = 2;
+}
+
+message PayRequest {
+    string email = 1;
+}
+
+message PayResponse {
+    int64 balance = 1;
+    bool success = 2;
+}

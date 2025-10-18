@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package booking;
+
+option go_package = "mkode.booking.v1;bookingv1";
+
+service Book {
+    rpc Book (BookRequest) returns (BookResponse);
+}
+
+message BookRequest {
+    string email = 1;
+    string boxName = 2;
+    int64 peopleAmount = 3;
+    int64 timeHrs = 4;
+    int64 timeMins = 5;
+}
+
+message BookResponse {
+    bool success = 1;
+    int64 reserve_id = 2;
+}

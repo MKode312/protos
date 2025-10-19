@@ -101,6 +101,7 @@ type BookResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	ReserveId     int64                  `protobuf:"varint,2,opt,name=reserve_id,json=reserveId,proto3" json:"reserve_id,omitempty"`
+	Balance       int64                  `protobuf:"varint,3,opt,name=balance,proto3" json:"balance,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -149,6 +150,13 @@ func (x *BookResponse) GetReserveId() int64 {
 	return 0
 }
 
+func (x *BookResponse) GetBalance() int64 {
+	if x != nil {
+		return x.Balance
+	}
+	return 0
+}
+
 var File_booking_booking_proto protoreflect.FileDescriptor
 
 const file_booking_booking_proto_rawDesc = "" +
@@ -159,11 +167,12 @@ const file_booking_booking_proto_rawDesc = "" +
 	"\aboxName\x18\x02 \x01(\tR\aboxName\x12\"\n" +
 	"\fpeopleAmount\x18\x03 \x01(\x03R\fpeopleAmount\x12\x18\n" +
 	"\atimeHrs\x18\x04 \x01(\x03R\atimeHrs\x12\x1a\n" +
-	"\btimeMins\x18\x05 \x01(\x03R\btimeMins\"G\n" +
+	"\btimeMins\x18\x05 \x01(\x03R\btimeMins\"a\n" +
 	"\fBookResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1d\n" +
 	"\n" +
-	"reserve_id\x18\x02 \x01(\x03R\treserveId2;\n" +
+	"reserve_id\x18\x02 \x01(\x03R\treserveId\x12\x18\n" +
+	"\abalance\x18\x03 \x01(\x03R\abalance2;\n" +
 	"\x04Book\x123\n" +
 	"\x04Book\x12\x14.booking.BookRequest\x1a\x15.booking.BookResponseB\x1cZ\x1amkode.booking.v1;bookingv1b\x06proto3"
 

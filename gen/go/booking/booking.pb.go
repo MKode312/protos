@@ -26,8 +26,9 @@ type BookRequest struct {
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	BoxName       string                 `protobuf:"bytes,2,opt,name=boxName,proto3" json:"boxName,omitempty"`
 	PeopleAmount  int64                  `protobuf:"varint,3,opt,name=peopleAmount,proto3" json:"peopleAmount,omitempty"`
-	TimeHrs       int64                  `protobuf:"varint,4,opt,name=timeHrs,proto3" json:"timeHrs,omitempty"`
-	TimeMins      int64                  `protobuf:"varint,5,opt,name=timeMins,proto3" json:"timeMins,omitempty"`
+	TimeStart     string                 `protobuf:"bytes,4,opt,name=timeStart,proto3" json:"timeStart,omitempty"`
+	TimeHrs       int64                  `protobuf:"varint,5,opt,name=timeHrs,proto3" json:"timeHrs,omitempty"`
+	TimeMins      int64                  `protobuf:"varint,6,opt,name=timeMins,proto3" json:"timeMins,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -81,6 +82,13 @@ func (x *BookRequest) GetPeopleAmount() int64 {
 		return x.PeopleAmount
 	}
 	return 0
+}
+
+func (x *BookRequest) GetTimeStart() string {
+	if x != nil {
+		return x.TimeStart
+	}
+	return ""
 }
 
 func (x *BookRequest) GetTimeHrs() int64 {
@@ -161,13 +169,14 @@ var File_booking_booking_proto protoreflect.FileDescriptor
 
 const file_booking_booking_proto_rawDesc = "" +
 	"\n" +
-	"\x15booking/booking.proto\x12\abooking\"\x97\x01\n" +
+	"\x15booking/booking.proto\x12\abooking\"\xb5\x01\n" +
 	"\vBookRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x18\n" +
 	"\aboxName\x18\x02 \x01(\tR\aboxName\x12\"\n" +
-	"\fpeopleAmount\x18\x03 \x01(\x03R\fpeopleAmount\x12\x18\n" +
-	"\atimeHrs\x18\x04 \x01(\x03R\atimeHrs\x12\x1a\n" +
-	"\btimeMins\x18\x05 \x01(\x03R\btimeMins\"a\n" +
+	"\fpeopleAmount\x18\x03 \x01(\x03R\fpeopleAmount\x12\x1c\n" +
+	"\ttimeStart\x18\x04 \x01(\tR\ttimeStart\x12\x18\n" +
+	"\atimeHrs\x18\x05 \x01(\x03R\atimeHrs\x12\x1a\n" +
+	"\btimeMins\x18\x06 \x01(\x03R\btimeMins\"a\n" +
 	"\fBookResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1d\n" +
 	"\n" +

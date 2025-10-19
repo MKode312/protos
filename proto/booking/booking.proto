@@ -12,8 +12,9 @@ message BookRequest {
     string email = 1;
     string boxName = 2;
     int64 peopleAmount = 3;
-    int64 timeHrs = 4;
-    int64 timeMins = 5;
+    string timeStart = 4;
+    int64 timeHrs = 5;
+    int64 timeMins = 6;
 }
 
 message BookResponse {

@@ -165,6 +165,118 @@ func (x *BookResponse) GetBalance() int64 {
 	return 0
 }
 
+type CancelBookingRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BookingId     int64                  `protobuf:"varint,1,opt,name=booking_id,json=bookingId,proto3" json:"booking_id,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CancelBookingRequest) Reset() {
+	*x = CancelBookingRequest{}
+	mi := &file_booking_booking_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancelBookingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelBookingRequest) ProtoMessage() {}
+
+func (x *CancelBookingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_booking_booking_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelBookingRequest.ProtoReflect.Descriptor instead.
+func (*CancelBookingRequest) Descriptor() ([]byte, []int) {
+	return file_booking_booking_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *CancelBookingRequest) GetBookingId() int64 {
+	if x != nil {
+		return x.BookingId
+	}
+	return 0
+}
+
+func (x *CancelBookingRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type CancelBookingResponse struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	Success        bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	RefundedAmount int64                  `protobuf:"varint,2,opt,name=refunded_amount,json=refundedAmount,proto3" json:"refunded_amount,omitempty"`
+	Balance        int64                  `protobuf:"varint,3,opt,name=balance,proto3" json:"balance,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *CancelBookingResponse) Reset() {
+	*x = CancelBookingResponse{}
+	mi := &file_booking_booking_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CancelBookingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CancelBookingResponse) ProtoMessage() {}
+
+func (x *CancelBookingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_booking_booking_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CancelBookingResponse.ProtoReflect.Descriptor instead.
+func (*CancelBookingResponse) Descriptor() ([]byte, []int) {
+	return file_booking_booking_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *CancelBookingResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+func (x *CancelBookingResponse) GetRefundedAmount() int64 {
+	if x != nil {
+		return x.RefundedAmount
+	}
+	return 0
+}
+
+func (x *CancelBookingResponse) GetBalance() int64 {
+	if x != nil {
+		return x.Balance
+	}
+	return 0
+}
+
 var File_booking_booking_proto protoreflect.FileDescriptor
 
 const file_booking_booking_proto_rawDesc = "" +
@@ -181,9 +293,18 @@ const file_booking_booking_proto_rawDesc = "" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x1d\n" +
 	"\n" +
 	"reserve_id\x18\x02 \x01(\x03R\treserveId\x12\x18\n" +
-	"\abalance\x18\x03 \x01(\x03R\abalance2;\n" +
+	"\abalance\x18\x03 \x01(\x03R\abalance\"K\n" +
+	"\x14CancelBookingRequest\x12\x1d\n" +
+	"\n" +
+	"booking_id\x18\x01 \x01(\x03R\tbookingId\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\"t\n" +
+	"\x15CancelBookingResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\x12'\n" +
+	"\x0frefunded_amount\x18\x02 \x01(\x03R\x0erefundedAmount\x12\x18\n" +
+	"\abalance\x18\x03 \x01(\x03R\abalance2\x8b\x01\n" +
 	"\x04Book\x123\n" +
-	"\x04Book\x12\x14.booking.BookRequest\x1a\x15.booking.BookResponseB\x1cZ\x1amkode.booking.v1;bookingv1b\x06proto3"
+	"\x04Book\x12\x14.booking.BookRequest\x1a\x15.booking.BookResponse\x12N\n" +
+	"\rCancelBooking\x12\x1d.booking.CancelBookingRequest\x1a\x1e.booking.CancelBookingResponseB\x1cZ\x1amkode.booking.v1;bookingv1b\x06proto3"
 
 var (
 	file_booking_booking_proto_rawDescOnce sync.Once
@@ -197,16 +318,20 @@ func file_booking_booking_proto_rawDescGZIP() []byte {
 	return file_booking_booking_proto_rawDescData
 }
 
-var file_booking_booking_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_booking_booking_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_booking_booking_proto_goTypes = []any{
-	(*BookRequest)(nil),  // 0: booking.BookRequest
-	(*BookResponse)(nil), // 1: booking.BookResponse
+	(*BookRequest)(nil),           // 0: booking.BookRequest
+	(*BookResponse)(nil),          // 1: booking.BookResponse
+	(*CancelBookingRequest)(nil),  // 2: booking.CancelBookingRequest
+	(*CancelBookingResponse)(nil), // 3: booking.CancelBookingResponse
 }
 var file_booking_booking_proto_depIdxs = []int32{
 	0, // 0: booking.Book.Book:input_type -> booking.BookRequest
-	1, // 1: booking.Book.Book:output_type -> booking.BookResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 1: booking.Book.CancelBooking:input_type -> booking.CancelBookingRequest
+	1, // 2: booking.Book.Book:output_type -> booking.BookResponse
+	3, // 3: booking.Book.CancelBooking:output_type -> booking.CancelBookingResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -223,7 +348,7 @@ func file_booking_booking_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_booking_booking_proto_rawDesc), len(file_booking_booking_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

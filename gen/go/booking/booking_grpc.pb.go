@@ -19,7 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Book_Book_FullMethodName = "/booking.Book/Book"
+	Book_Book_FullMethodName          = "/booking.Book/Book"
+	Book_CancelBooking_FullMethodName = "/booking.Book/CancelBooking"
 )
 
 // BookClient is the client API for Book service.
@@ -27,6 +28,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type BookClient interface {
 	Book(ctx context.Context, in *BookRequest, opts ...grpc.CallOption) (*BookResponse, error)
+	CancelBooking(ctx context.Context, in *CancelBookingRequest, opts ...grpc.CallOption) (*CancelBookingResponse, error)
 }
 
 type bookClient struct {
@@ -47,11 +49,22 @@ func (c *bookClient) Book(ctx context.Context, in *BookRequest, opts ...grpc.Cal
 	return out, nil
 }
 
+func (c *bookClient) CancelBooking(ctx context.Context, in *CancelBookingRequest, opts ...grpc.CallOption) (*CancelBookingResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CancelBookingResponse)
+	err := c.cc.Invoke(ctx, Book_CancelBooking_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BookServer is the server API for Book service.
 // All implementations must embed UnimplementedBookServer
 // for forward compatibility.
 type BookServer interface {
 	Book(context.Context, *BookRequest) (*BookResponse, error)
+	CancelBooking(context.Context, *CancelBookingRequest) (*CancelBookingResponse, error)
 	mustEmbedUnimplementedBookServer()
 }
 
@@ -64,6 +77,9 @@ type UnimplementedBookServer struct{}
 
 func (UnimplementedBookServer) Book(context.Context, *BookRequest) (*BookResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Book not implemented")
+}
+func (UnimplementedBookServer) CancelBooking(context.Context, *CancelBookingRequest) (*CancelBookingResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CancelBooking not implemented")
 }
 func (UnimplementedBookServer) mustEmbedUnimplementedBookServer() {}
 func (UnimplementedBookServer) testEmbeddedByValue()              {}
@@ -104,6 +120,24 @@ func _Book_Book_Handler(srv interface{}, ctx context.Context, dec func(interface
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Book_CancelBooking_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CancelBookingRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BookServer).CancelBooking(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Book_CancelBooking_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BookServer).CancelBooking(ctx, req.(*CancelBookingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Book_ServiceDesc is the grpc.ServiceDesc for Book service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -114,6 +148,10 @@ var Book_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Book",
 			Handler:    _Book_Book_Handler,
+		},
+		{
+			MethodName: "CancelBooking",
+			Handler:    _Book_CancelBooking_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -19,9 +19,10 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Payment_AddCard_FullMethodName  = "/payments.Payment/AddCard"
-	Payment_AddFunds_FullMethodName = "/payments.Payment/AddFunds"
-	Payment_Pay_FullMethodName      = "/payments.Payment/Pay"
+	Payment_AddCard_FullMethodName  = "/payments.v1.Payment/AddCard"
+	Payment_AddFunds_FullMethodName = "/payments.v1.Payment/AddFunds"
+	Payment_Pay_FullMethodName      = "/payments.v1.Payment/Pay"
+	Payment_GetCard_FullMethodName  = "/payments.v1.Payment/GetCard"
 )
 
 // PaymentClient is the client API for Payment service.
@@ -31,6 +32,7 @@ type PaymentClient interface {
 	AddCard(ctx context.Context, in *AddCardRequest, opts ...grpc.CallOption) (*AddCardResponse, error)
 	AddFunds(ctx context.Context, in *AddFundsRequest, opts ...grpc.CallOption) (*AddFundsResponse, error)
 	Pay(ctx context.Context, in *PayRequest, opts ...grpc.CallOption) (*PayResponse, error)
+	GetCard(ctx context.Context, in *GetCardRequest, opts ...grpc.CallOption) (*GetCardResponse, error)
 }
 
 type paymentClient struct {
@@ -71,6 +73,16 @@ func (c *paymentClient) Pay(ctx context.Context, in *PayRequest, opts ...grpc.Ca
 	return out, nil
 }
 
+func (c *paymentClient) GetCard(ctx context.Context, in *GetCardRequest, opts ...grpc.CallOption) (*GetCardResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCardResponse)
+	err := c.cc.Invoke(ctx, Payment_GetCard_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // PaymentServer is the server API for Payment service.
 // All implementations must embed UnimplementedPaymentServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type PaymentServer interface {
 	AddCard(context.Context, *AddCardRequest) (*AddCardResponse, error)
 	AddFunds(context.Context, *AddFundsRequest) (*AddFundsResponse, error)
 	Pay(context.Context, *PayRequest) (*PayResponse, error)
+	GetCard(context.Context, *GetCardRequest) (*GetCardResponse, error)
 	mustEmbedUnimplementedPaymentServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedPaymentServer) AddFunds(context.Context, *AddFundsRequest) (*
 }
 func (UnimplementedPaymentServer) Pay(context.Context, *PayRequest) (*PayResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Pay not implemented")
+}
+func (UnimplementedPaymentServer) GetCard(context.Context, *GetCardRequest) (*GetCardResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCard not implemented")
 }
 func (UnimplementedPaymentServer) mustEmbedUnimplementedPaymentServer() {}
 func (UnimplementedPaymentServer) testEmbeddedByValue()                 {}
@@ -172,11 +188,29 @@ func _Payment_Pay_Handler(srv interface{}, ctx context.Context, dec func(interfa
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Payment_GetCard_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCardRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PaymentServer).GetCard(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Payment_GetCard_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PaymentServer).GetCard(ctx, req.(*GetCardRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Payment_ServiceDesc is the grpc.ServiceDesc for Payment service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Payment_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "payments.Payment",
+	ServiceName: "payments.v1.Payment",
 	HandlerType: (*PaymentServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -190,6 +224,10 @@ var Payment_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Pay",
 			Handler:    _Payment_Pay_Handler,
+		},
+		{
+			MethodName: "GetCard",
+			Handler:    _Payment_GetCard_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

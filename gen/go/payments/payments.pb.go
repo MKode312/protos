@@ -24,9 +24,9 @@ const (
 type AddCardRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	PhoneNumber   string                 `protobuf:"bytes,2,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
-	CardNumber    string                 `protobuf:"bytes,3,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
-	Cvc           string                 `protobuf:"bytes,4,opt,name=cvc,proto3" json:"cvc,omitempty"`
+	CardNumber    string                 `protobuf:"bytes,2,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	Cvc           string                 `protobuf:"bytes,3,opt,name=cvc,proto3" json:"cvc,omitempty"`
+	PhoneNumber   string                 `protobuf:"bytes,4,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -68,13 +68,6 @@ func (x *AddCardRequest) GetEmail() string {
 	return ""
 }
 
-func (x *AddCardRequest) GetPhoneNumber() string {
-	if x != nil {
-		return x.PhoneNumber
-	}
-	return ""
-}
-
 func (x *AddCardRequest) GetCardNumber() string {
 	if x != nil {
 		return x.CardNumber
@@ -85,6 +78,13 @@ func (x *AddCardRequest) GetCardNumber() string {
 func (x *AddCardRequest) GetCvc() string {
 	if x != nil {
 		return x.Cvc
+	}
+	return ""
+}
+
+func (x *AddCardRequest) GetPhoneNumber() string {
+	if x != nil {
+		return x.PhoneNumber
 	}
 	return ""
 }
@@ -341,17 +341,121 @@ func (x *PayResponse) GetSuccess() bool {
 	return false
 }
 
+type GetCardRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCardRequest) Reset() {
+	*x = GetCardRequest{}
+	mi := &file_payments_payments_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCardRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCardRequest) ProtoMessage() {}
+
+func (x *GetCardRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_payments_payments_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCardRequest.ProtoReflect.Descriptor instead.
+func (*GetCardRequest) Descriptor() ([]byte, []int) {
+	return file_payments_payments_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetCardRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type GetCardResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	CardNumber    string                 `protobuf:"bytes,1,opt,name=card_number,json=cardNumber,proto3" json:"card_number,omitempty"`
+	PhoneNumber   string                 `protobuf:"bytes,2,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number,omitempty"`
+	Success       bool                   `protobuf:"varint,3,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCardResponse) Reset() {
+	*x = GetCardResponse{}
+	mi := &file_payments_payments_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCardResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCardResponse) ProtoMessage() {}
+
+func (x *GetCardResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_payments_payments_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCardResponse.ProtoReflect.Descriptor instead.
+func (*GetCardResponse) Descriptor() ([]byte, []int) {
+	return file_payments_payments_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *GetCardResponse) GetCardNumber() string {
+	if x != nil {
+		return x.CardNumber
+	}
+	return ""
+}
+
+func (x *GetCardResponse) GetPhoneNumber() string {
+	if x != nil {
+		return x.PhoneNumber
+	}
+	return ""
+}
+
+func (x *GetCardResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_payments_payments_proto protoreflect.FileDescriptor
 
 const file_payments_payments_proto_rawDesc = "" +
 	"\n" +
-	"\x17payments/payments.proto\x12\bpayments\"|\n" +
+	"\x17payments/payments.proto\x12\vpayments.v1\"|\n" +
 	"\x0eAddCardRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12!\n" +
-	"\fphone_number\x18\x02 \x01(\tR\vphoneNumber\x12\x1f\n" +
-	"\vcard_number\x18\x03 \x01(\tR\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1f\n" +
+	"\vcard_number\x18\x02 \x01(\tR\n" +
 	"cardNumber\x12\x10\n" +
-	"\x03cvc\x18\x04 \x01(\tR\x03cvc\"+\n" +
+	"\x03cvc\x18\x03 \x01(\tR\x03cvc\x12!\n" +
+	"\fphone_number\x18\x04 \x01(\tR\vphoneNumber\"+\n" +
 	"\x0fAddCardResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"?\n" +
 	"\x0fAddFundsRequest\x12\x14\n" +
@@ -366,11 +470,19 @@ const file_payments_payments_proto_rawDesc = "" +
 	"\x06amount\x18\x02 \x01(\x03R\x06amount\"A\n" +
 	"\vPayResponse\x12\x18\n" +
 	"\abalance\x18\x01 \x01(\x03R\abalance\x12\x18\n" +
-	"\asuccess\x18\x02 \x01(\bR\asuccess2\xc0\x01\n" +
-	"\aPayment\x12>\n" +
-	"\aAddCard\x12\x18.payments.AddCardRequest\x1a\x19.payments.AddCardResponse\x12A\n" +
-	"\bAddFunds\x12\x19.payments.AddFundsRequest\x1a\x1a.payments.AddFundsResponse\x122\n" +
-	"\x03Pay\x12\x14.payments.PayRequest\x1a\x15.payments.PayResponseB\x1eZ\x1cmkode.payments.v1;paymentsv1b\x06proto3"
+	"\asuccess\x18\x02 \x01(\bR\asuccess\"&\n" +
+	"\x0eGetCardRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"o\n" +
+	"\x0fGetCardResponse\x12\x1f\n" +
+	"\vcard_number\x18\x01 \x01(\tR\n" +
+	"cardNumber\x12!\n" +
+	"\fphone_number\x18\x02 \x01(\tR\vphoneNumber\x12\x18\n" +
+	"\asuccess\x18\x03 \x01(\bR\asuccess2\xa0\x02\n" +
+	"\aPayment\x12F\n" +
+	"\aAddCard\x12\x1b.payments.v1.AddCardRequest\x1a\x1c.payments.v1.AddCardResponse\"\x00\x12I\n" +
+	"\bAddFunds\x12\x1c.payments.v1.AddFundsRequest\x1a\x1d.payments.v1.AddFundsResponse\"\x00\x12:\n" +
+	"\x03Pay\x12\x17.payments.v1.PayRequest\x1a\x18.payments.v1.PayResponse\"\x00\x12F\n" +
+	"\aGetCard\x12\x1b.payments.v1.GetCardRequest\x1a\x1c.payments.v1.GetCardResponse\"\x00B7Z5github.com/MKode312/protos/gen/go/payments;paymentsv1b\x06proto3"
 
 var (
 	file_payments_payments_proto_rawDescOnce sync.Once
@@ -384,24 +496,28 @@ func file_payments_payments_proto_rawDescGZIP() []byte {
 	return file_payments_payments_proto_rawDescData
 }
 
-var file_payments_payments_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_payments_payments_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_payments_payments_proto_goTypes = []any{
-	(*AddCardRequest)(nil),   // 0: payments.AddCardRequest
-	(*AddCardResponse)(nil),  // 1: payments.AddCardResponse
-	(*AddFundsRequest)(nil),  // 2: payments.AddFundsRequest
-	(*AddFundsResponse)(nil), // 3: payments.AddFundsResponse
-	(*PayRequest)(nil),       // 4: payments.PayRequest
-	(*PayResponse)(nil),      // 5: payments.PayResponse
+	(*AddCardRequest)(nil),   // 0: payments.v1.AddCardRequest
+	(*AddCardResponse)(nil),  // 1: payments.v1.AddCardResponse
+	(*AddFundsRequest)(nil),  // 2: payments.v1.AddFundsRequest
+	(*AddFundsResponse)(nil), // 3: payments.v1.AddFundsResponse
+	(*PayRequest)(nil),       // 4: payments.v1.PayRequest
+	(*PayResponse)(nil),      // 5: payments.v1.PayResponse
+	(*GetCardRequest)(nil),   // 6: payments.v1.GetCardRequest
+	(*GetCardResponse)(nil),  // 7: payments.v1.GetCardResponse
 }
 var file_payments_payments_proto_depIdxs = []int32{
-	0, // 0: payments.Payment.AddCard:input_type -> payments.AddCardRequest
-	2, // 1: payments.Payment.AddFunds:input_type -> payments.AddFundsRequest
-	4, // 2: payments.Payment.Pay:input_type -> payments.PayRequest
-	1, // 3: payments.Payment.AddCard:output_type -> payments.AddCardResponse
-	3, // 4: payments.Payment.AddFunds:output_type -> payments.AddFundsResponse
-	5, // 5: payments.Payment.Pay:output_type -> payments.PayResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	0, // 0: payments.v1.Payment.AddCard:input_type -> payments.v1.AddCardRequest
+	2, // 1: payments.v1.Payment.AddFunds:input_type -> payments.v1.AddFundsRequest
+	4, // 2: payments.v1.Payment.Pay:input_type -> payments.v1.PayRequest
+	6, // 3: payments.v1.Payment.GetCard:input_type -> payments.v1.GetCardRequest
+	1, // 4: payments.v1.Payment.AddCard:output_type -> payments.v1.AddCardResponse
+	3, // 5: payments.v1.Payment.AddFunds:output_type -> payments.v1.AddFundsResponse
+	5, // 6: payments.v1.Payment.Pay:output_type -> payments.v1.PayResponse
+	7, // 7: payments.v1.Payment.GetCard:output_type -> payments.v1.GetCardResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -418,7 +534,7 @@ func file_payments_payments_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_payments_payments_proto_rawDesc), len(file_payments_payments_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

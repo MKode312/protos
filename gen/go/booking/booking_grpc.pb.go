@@ -21,6 +21,8 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	Book_Book_FullMethodName          = "/booking.Book/Book"
 	Book_CancelBooking_FullMethodName = "/booking.Book/CancelBooking"
+	Book_GetBoxes_FullMethodName      = "/booking.Book/GetBoxes"
+	Book_GetBookings_FullMethodName   = "/booking.Book/GetBookings"
 )
 
 // BookClient is the client API for Book service.
@@ -29,6 +31,8 @@ const (
 type BookClient interface {
 	Book(ctx context.Context, in *BookRequest, opts ...grpc.CallOption) (*BookResponse, error)
 	CancelBooking(ctx context.Context, in *CancelBookingRequest, opts ...grpc.CallOption) (*CancelBookingResponse, error)
+	GetBoxes(ctx context.Context, in *GetBoxesRequest, opts ...grpc.CallOption) (*GetBoxesResponse, error)
+	GetBookings(ctx context.Context, in *GetBookingsRequest, opts ...grpc.CallOption) (*GetBookingsResponse, error)
 }
 
 type bookClient struct {
@@ -59,12 +63,34 @@ func (c *bookClient) CancelBooking(ctx context.Context, in *CancelBookingRequest
 	return out, nil
 }
 
+func (c *bookClient) GetBoxes(ctx context.Context, in *GetBoxesRequest, opts ...grpc.CallOption) (*GetBoxesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetBoxesResponse)
+	err := c.cc.Invoke(ctx, Book_GetBoxes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bookClient) GetBookings(ctx context.Context, in *GetBookingsRequest, opts ...grpc.CallOption) (*GetBookingsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetBookingsResponse)
+	err := c.cc.Invoke(ctx, Book_GetBookings_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // BookServer is the server API for Book service.
 // All implementations must embed UnimplementedBookServer
 // for forward compatibility.
 type BookServer interface {
 	Book(context.Context, *BookRequest) (*BookResponse, error)
 	CancelBooking(context.Context, *CancelBookingRequest) (*CancelBookingResponse, error)
+	GetBoxes(context.Context, *GetBoxesRequest) (*GetBoxesResponse, error)
+	GetBookings(context.Context, *GetBookingsRequest) (*GetBookingsResponse, error)
 	mustEmbedUnimplementedBookServer()
 }
 
@@ -80,6 +106,12 @@ func (UnimplementedBookServer) Book(context.Context, *BookRequest) (*BookRespons
 }
 func (UnimplementedBookServer) CancelBooking(context.Context, *CancelBookingRequest) (*CancelBookingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CancelBooking not implemented")
+}
+func (UnimplementedBookServer) GetBoxes(context.Context, *GetBoxesRequest) (*GetBoxesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBoxes not implemented")
+}
+func (UnimplementedBookServer) GetBookings(context.Context, *GetBookingsRequest) (*GetBookingsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBookings not implemented")
 }
 func (UnimplementedBookServer) mustEmbedUnimplementedBookServer() {}
 func (UnimplementedBookServer) testEmbeddedByValue()              {}
@@ -138,6 +170,42 @@ func _Book_CancelBooking_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Book_GetBoxes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBoxesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BookServer).GetBoxes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Book_GetBoxes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BookServer).GetBoxes(ctx, req.(*GetBoxesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Book_GetBookings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetBookingsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BookServer).GetBookings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Book_GetBookings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BookServer).GetBookings(ctx, req.(*GetBookingsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Book_ServiceDesc is the grpc.ServiceDesc for Book service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +220,14 @@ var Book_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CancelBooking",
 			Handler:    _Book_CancelBooking_Handler,
+		},
+		{
+			MethodName: "GetBoxes",
+			Handler:    _Book_GetBoxes_Handler,
+		},
+		{
+			MethodName: "GetBookings",
+			Handler:    _Book_GetBookings_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -7,6 +7,37 @@ option go_package = "mkode.booking.v1;bookingv1";
 service Book {
     rpc Book (BookRequest) returns (BookResponse);
     rpc CancelBooking (CancelBookingRequest) returns (CancelBookingResponse);
+    rpc GetBoxes (GetBoxesRequest) returns (GetBoxesResponse);
+    rpc GetBookings (GetBookingsRequest) returns (GetBookingsResponse);
+}
+
+message Box {
+    string name = 1;
+    int64 price_per_hour = 2;
+    bool available = 3;
+}
+
+message GetBoxesRequest {}
+
+message GetBoxesResponse {
+    repeated Box boxes = 1;
+}
+
+message Booking {
+    int64 id = 1;
+    string box_name = 2;
+    string time_start = 3;
+    int64 time_hrs = 4;
+    int64 time_mins = 5;
+    int64 people_amount = 6;
+}
+
+message GetBookingsRequest {
+    string email = 1;
+}
+
+message GetBookingsResponse {
+    repeated Booking bookings = 1;
 }
 
 message BookRequest {

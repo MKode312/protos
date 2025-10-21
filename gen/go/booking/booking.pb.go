@@ -21,6 +21,318 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type Box struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	PricePerHour  int64                  `protobuf:"varint,2,opt,name=price_per_hour,json=pricePerHour,proto3" json:"price_per_hour,omitempty"`
+	Available     bool                   `protobuf:"varint,3,opt,name=available,proto3" json:"available,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Box) Reset() {
+	*x = Box{}
+	mi := &file_booking_booking_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Box) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Box) ProtoMessage() {}
+
+func (x *Box) ProtoReflect() protoreflect.Message {
+	mi := &file_booking_booking_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Box.ProtoReflect.Descriptor instead.
+func (*Box) Descriptor() ([]byte, []int) {
+	return file_booking_booking_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *Box) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Box) GetPricePerHour() int64 {
+	if x != nil {
+		return x.PricePerHour
+	}
+	return 0
+}
+
+func (x *Box) GetAvailable() bool {
+	if x != nil {
+		return x.Available
+	}
+	return false
+}
+
+type GetBoxesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBoxesRequest) Reset() {
+	*x = GetBoxesRequest{}
+	mi := &file_booking_booking_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBoxesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBoxesRequest) ProtoMessage() {}
+
+func (x *GetBoxesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_booking_booking_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBoxesRequest.ProtoReflect.Descriptor instead.
+func (*GetBoxesRequest) Descriptor() ([]byte, []int) {
+	return file_booking_booking_proto_rawDescGZIP(), []int{1}
+}
+
+type GetBoxesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Boxes         []*Box                 `protobuf:"bytes,1,rep,name=boxes,proto3" json:"boxes,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBoxesResponse) Reset() {
+	*x = GetBoxesResponse{}
+	mi := &file_booking_booking_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBoxesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBoxesResponse) ProtoMessage() {}
+
+func (x *GetBoxesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_booking_booking_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBoxesResponse.ProtoReflect.Descriptor instead.
+func (*GetBoxesResponse) Descriptor() ([]byte, []int) {
+	return file_booking_booking_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *GetBoxesResponse) GetBoxes() []*Box {
+	if x != nil {
+		return x.Boxes
+	}
+	return nil
+}
+
+type Booking struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	BoxName       string                 `protobuf:"bytes,2,opt,name=box_name,json=boxName,proto3" json:"box_name,omitempty"`
+	TimeStart     string                 `protobuf:"bytes,3,opt,name=time_start,json=timeStart,proto3" json:"time_start,omitempty"`
+	TimeHrs       int64                  `protobuf:"varint,4,opt,name=time_hrs,json=timeHrs,proto3" json:"time_hrs,omitempty"`
+	TimeMins      int64                  `protobuf:"varint,5,opt,name=time_mins,json=timeMins,proto3" json:"time_mins,omitempty"`
+	PeopleAmount  int64                  `protobuf:"varint,6,opt,name=people_amount,json=peopleAmount,proto3" json:"people_amount,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Booking) Reset() {
+	*x = Booking{}
+	mi := &file_booking_booking_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Booking) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Booking) ProtoMessage() {}
+
+func (x *Booking) ProtoReflect() protoreflect.Message {
+	mi := &file_booking_booking_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Booking.ProtoReflect.Descriptor instead.
+func (*Booking) Descriptor() ([]byte, []int) {
+	return file_booking_booking_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *Booking) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *Booking) GetBoxName() string {
+	if x != nil {
+		return x.BoxName
+	}
+	return ""
+}
+
+func (x *Booking) GetTimeStart() string {
+	if x != nil {
+		return x.TimeStart
+	}
+	return ""
+}
+
+func (x *Booking) GetTimeHrs() int64 {
+	if x != nil {
+		return x.TimeHrs
+	}
+	return 0
+}
+
+func (x *Booking) GetTimeMins() int64 {
+	if x != nil {
+		return x.TimeMins
+	}
+	return 0
+}
+
+func (x *Booking) GetPeopleAmount() int64 {
+	if x != nil {
+		return x.PeopleAmount
+	}
+	return 0
+}
+
+type GetBookingsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBookingsRequest) Reset() {
+	*x = GetBookingsRequest{}
+	mi := &file_booking_booking_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBookingsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBookingsRequest) ProtoMessage() {}
+
+func (x *GetBookingsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_booking_booking_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBookingsRequest.ProtoReflect.Descriptor instead.
+func (*GetBookingsRequest) Descriptor() ([]byte, []int) {
+	return file_booking_booking_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetBookingsRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type GetBookingsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Bookings      []*Booking             `protobuf:"bytes,1,rep,name=bookings,proto3" json:"bookings,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetBookingsResponse) Reset() {
+	*x = GetBookingsResponse{}
+	mi := &file_booking_booking_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetBookingsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetBookingsResponse) ProtoMessage() {}
+
+func (x *GetBookingsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_booking_booking_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetBookingsResponse.ProtoReflect.Descriptor instead.
+func (*GetBookingsResponse) Descriptor() ([]byte, []int) {
+	return file_booking_booking_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetBookingsResponse) GetBookings() []*Booking {
+	if x != nil {
+		return x.Bookings
+	}
+	return nil
+}
+
 type BookRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
@@ -35,7 +347,7 @@ type BookRequest struct {
 
 func (x *BookRequest) Reset() {
 	*x = BookRequest{}
-	mi := &file_booking_booking_proto_msgTypes[0]
+	mi := &file_booking_booking_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +359,7 @@ func (x *BookRequest) String() string {
 func (*BookRequest) ProtoMessage() {}
 
 func (x *BookRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_booking_booking_proto_msgTypes[0]
+	mi := &file_booking_booking_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +372,7 @@ func (x *BookRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookRequest.ProtoReflect.Descriptor instead.
 func (*BookRequest) Descriptor() ([]byte, []int) {
-	return file_booking_booking_proto_rawDescGZIP(), []int{0}
+	return file_booking_booking_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *BookRequest) GetEmail() string {
@@ -116,7 +428,7 @@ type BookResponse struct {
 
 func (x *BookResponse) Reset() {
 	*x = BookResponse{}
-	mi := &file_booking_booking_proto_msgTypes[1]
+	mi := &file_booking_booking_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -128,7 +440,7 @@ func (x *BookResponse) String() string {
 func (*BookResponse) ProtoMessage() {}
 
 func (x *BookResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_booking_booking_proto_msgTypes[1]
+	mi := &file_booking_booking_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -141,7 +453,7 @@ func (x *BookResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BookResponse.ProtoReflect.Descriptor instead.
 func (*BookResponse) Descriptor() ([]byte, []int) {
-	return file_booking_booking_proto_rawDescGZIP(), []int{1}
+	return file_booking_booking_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *BookResponse) GetSuccess() bool {
@@ -175,7 +487,7 @@ type CancelBookingRequest struct {
 
 func (x *CancelBookingRequest) Reset() {
 	*x = CancelBookingRequest{}
-	mi := &file_booking_booking_proto_msgTypes[2]
+	mi := &file_booking_booking_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -187,7 +499,7 @@ func (x *CancelBookingRequest) String() string {
 func (*CancelBookingRequest) ProtoMessage() {}
 
 func (x *CancelBookingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_booking_booking_proto_msgTypes[2]
+	mi := &file_booking_booking_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -200,7 +512,7 @@ func (x *CancelBookingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelBookingRequest.ProtoReflect.Descriptor instead.
 func (*CancelBookingRequest) Descriptor() ([]byte, []int) {
-	return file_booking_booking_proto_rawDescGZIP(), []int{2}
+	return file_booking_booking_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CancelBookingRequest) GetBookingId() int64 {
@@ -228,7 +540,7 @@ type CancelBookingResponse struct {
 
 func (x *CancelBookingResponse) Reset() {
 	*x = CancelBookingResponse{}
-	mi := &file_booking_booking_proto_msgTypes[3]
+	mi := &file_booking_booking_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -240,7 +552,7 @@ func (x *CancelBookingResponse) String() string {
 func (*CancelBookingResponse) ProtoMessage() {}
 
 func (x *CancelBookingResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_booking_booking_proto_msgTypes[3]
+	mi := &file_booking_booking_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -253,7 +565,7 @@ func (x *CancelBookingResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelBookingResponse.ProtoReflect.Descriptor instead.
 func (*CancelBookingResponse) Descriptor() ([]byte, []int) {
-	return file_booking_booking_proto_rawDescGZIP(), []int{3}
+	return file_booking_booking_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CancelBookingResponse) GetSuccess() bool {
@@ -281,7 +593,26 @@ var File_booking_booking_proto protoreflect.FileDescriptor
 
 const file_booking_booking_proto_rawDesc = "" +
 	"\n" +
-	"\x15booking/booking.proto\x12\abooking\"\xb5\x01\n" +
+	"\x15booking/booking.proto\x12\abooking\"]\n" +
+	"\x03Box\x12\x12\n" +
+	"\x04name\x18\x01 \x01(\tR\x04name\x12$\n" +
+	"\x0eprice_per_hour\x18\x02 \x01(\x03R\fpricePerHour\x12\x1c\n" +
+	"\tavailable\x18\x03 \x01(\bR\tavailable\"\x11\n" +
+	"\x0fGetBoxesRequest\"6\n" +
+	"\x10GetBoxesResponse\x12\"\n" +
+	"\x05boxes\x18\x01 \x03(\v2\f.booking.BoxR\x05boxes\"\xb0\x01\n" +
+	"\aBooking\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
+	"\bbox_name\x18\x02 \x01(\tR\aboxName\x12\x1d\n" +
+	"\n" +
+	"time_start\x18\x03 \x01(\tR\ttimeStart\x12\x19\n" +
+	"\btime_hrs\x18\x04 \x01(\x03R\atimeHrs\x12\x1b\n" +
+	"\ttime_mins\x18\x05 \x01(\x03R\btimeMins\x12#\n" +
+	"\rpeople_amount\x18\x06 \x01(\x03R\fpeopleAmount\"*\n" +
+	"\x12GetBookingsRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"C\n" +
+	"\x13GetBookingsResponse\x12,\n" +
+	"\bbookings\x18\x01 \x03(\v2\x10.booking.BookingR\bbookings\"\xb5\x01\n" +
 	"\vBookRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x18\n" +
 	"\aboxName\x18\x02 \x01(\tR\aboxName\x12\"\n" +
@@ -301,10 +632,12 @@ const file_booking_booking_proto_rawDesc = "" +
 	"\x15CancelBookingResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\x12'\n" +
 	"\x0frefunded_amount\x18\x02 \x01(\x03R\x0erefundedAmount\x12\x18\n" +
-	"\abalance\x18\x03 \x01(\x03R\abalance2\x8b\x01\n" +
+	"\abalance\x18\x03 \x01(\x03R\abalance2\x96\x02\n" +
 	"\x04Book\x123\n" +
 	"\x04Book\x12\x14.booking.BookRequest\x1a\x15.booking.BookResponse\x12N\n" +
-	"\rCancelBooking\x12\x1d.booking.CancelBookingRequest\x1a\x1e.booking.CancelBookingResponseB\x1cZ\x1amkode.booking.v1;bookingv1b\x06proto3"
+	"\rCancelBooking\x12\x1d.booking.CancelBookingRequest\x1a\x1e.booking.CancelBookingResponse\x12?\n" +
+	"\bGetBoxes\x12\x18.booking.GetBoxesRequest\x1a\x19.booking.GetBoxesResponse\x12H\n" +
+	"\vGetBookings\x12\x1b.booking.GetBookingsRequest\x1a\x1c.booking.GetBookingsResponseB\x1cZ\x1amkode.booking.v1;bookingv1b\x06proto3"
 
 var (
 	file_booking_booking_proto_rawDescOnce sync.Once
@@ -318,23 +651,35 @@ func file_booking_booking_proto_rawDescGZIP() []byte {
 	return file_booking_booking_proto_rawDescData
 }
 
-var file_booking_booking_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_booking_booking_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_booking_booking_proto_goTypes = []any{
-	(*BookRequest)(nil),           // 0: booking.BookRequest
-	(*BookResponse)(nil),          // 1: booking.BookResponse
-	(*CancelBookingRequest)(nil),  // 2: booking.CancelBookingRequest
-	(*CancelBookingResponse)(nil), // 3: booking.CancelBookingResponse
+	(*Box)(nil),                   // 0: booking.Box
+	(*GetBoxesRequest)(nil),       // 1: booking.GetBoxesRequest
+	(*GetBoxesResponse)(nil),      // 2: booking.GetBoxesResponse
+	(*Booking)(nil),               // 3: booking.Booking
+	(*GetBookingsRequest)(nil),    // 4: booking.GetBookingsRequest
+	(*GetBookingsResponse)(nil),   // 5: booking.GetBookingsResponse
+	(*BookRequest)(nil),           // 6: booking.BookRequest
+	(*BookResponse)(nil),          // 7: booking.BookResponse
+	(*CancelBookingRequest)(nil),  // 8: booking.CancelBookingRequest
+	(*CancelBookingResponse)(nil), // 9: booking.CancelBookingResponse
 }
 var file_booking_booking_proto_depIdxs = []int32{
-	0, // 0: booking.Book.Book:input_type -> booking.BookRequest
-	2, // 1: booking.Book.CancelBooking:input_type -> booking.CancelBookingRequest
-	1, // 2: booking.Book.Book:output_type -> booking.BookResponse
-	3, // 3: booking.Book.CancelBooking:output_type -> booking.CancelBookingResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: booking.GetBoxesResponse.boxes:type_name -> booking.Box
+	3, // 1: booking.GetBookingsResponse.bookings:type_name -> booking.Booking
+	6, // 2: booking.Book.Book:input_type -> booking.BookRequest
+	8, // 3: booking.Book.CancelBooking:input_type -> booking.CancelBookingRequest
+	1, // 4: booking.Book.GetBoxes:input_type -> booking.GetBoxesRequest
+	4, // 5: booking.Book.GetBookings:input_type -> booking.GetBookingsRequest
+	7, // 6: booking.Book.Book:output_type -> booking.BookResponse
+	9, // 7: booking.Book.CancelBooking:output_type -> booking.CancelBookingResponse
+	2, // 8: booking.Book.GetBoxes:output_type -> booking.GetBoxesResponse
+	5, // 9: booking.Book.GetBookings:output_type -> booking.GetBookingsResponse
+	6, // [6:10] is the sub-list for method output_type
+	2, // [2:6] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_booking_booking_proto_init() }
@@ -348,7 +693,7 @@ func file_booking_booking_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_booking_booking_proto_rawDesc), len(file_booking_booking_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -213,16 +213,120 @@ func (x *LoginResponse) GetToken() string {
 	return ""
 }
 
+type RegisterAsAdminRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
+	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	AdminSecret   string                 `protobuf:"bytes,3,opt,name=admin_secret,json=adminSecret,proto3" json:"admin_secret,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterAsAdminRequest) Reset() {
+	*x = RegisterAsAdminRequest{}
+	mi := &file_LibAssistant_sso_sso_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterAsAdminRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterAsAdminRequest) ProtoMessage() {}
+
+func (x *RegisterAsAdminRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_sso_sso_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterAsAdminRequest.ProtoReflect.Descriptor instead.
+func (*RegisterAsAdminRequest) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_sso_sso_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *RegisterAsAdminRequest) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *RegisterAsAdminRequest) GetPassword() string {
+	if x != nil {
+		return x.Password
+	}
+	return ""
+}
+
+func (x *RegisterAsAdminRequest) GetAdminSecret() string {
+	if x != nil {
+		return x.AdminSecret
+	}
+	return ""
+}
+
+type RegisterAsAdminResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterAsAdminResponse) Reset() {
+	*x = RegisterAsAdminResponse{}
+	mi := &file_LibAssistant_sso_sso_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterAsAdminResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterAsAdminResponse) ProtoMessage() {}
+
+func (x *RegisterAsAdminResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_sso_sso_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterAsAdminResponse.ProtoReflect.Descriptor instead.
+func (*RegisterAsAdminResponse) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_sso_sso_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *RegisterAsAdminResponse) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
 type IsAdminRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	AdminSecret   string                 `protobuf:"bytes,1,opt,name=admin_secret,json=adminSecret,proto3" json:"admin_secret,omitempty"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *IsAdminRequest) Reset() {
 	*x = IsAdminRequest{}
-	mi := &file_LibAssistant_sso_sso_proto_msgTypes[4]
+	mi := &file_LibAssistant_sso_sso_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -234,7 +338,7 @@ func (x *IsAdminRequest) String() string {
 func (*IsAdminRequest) ProtoMessage() {}
 
 func (x *IsAdminRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_sso_sso_proto_msgTypes[4]
+	mi := &file_LibAssistant_sso_sso_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -247,14 +351,14 @@ func (x *IsAdminRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IsAdminRequest.ProtoReflect.Descriptor instead.
 func (*IsAdminRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_sso_sso_proto_rawDescGZIP(), []int{4}
+	return file_LibAssistant_sso_sso_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *IsAdminRequest) GetAdminSecret() string {
+func (x *IsAdminRequest) GetUserId() int64 {
 	if x != nil {
-		return x.AdminSecret
+		return x.UserId
 	}
-	return ""
+	return 0
 }
 
 type IsAdminResponse struct {
@@ -266,7 +370,7 @@ type IsAdminResponse struct {
 
 func (x *IsAdminResponse) Reset() {
 	*x = IsAdminResponse{}
-	mi := &file_LibAssistant_sso_sso_proto_msgTypes[5]
+	mi := &file_LibAssistant_sso_sso_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -278,7 +382,7 @@ func (x *IsAdminResponse) String() string {
 func (*IsAdminResponse) ProtoMessage() {}
 
 func (x *IsAdminResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_sso_sso_proto_msgTypes[5]
+	mi := &file_LibAssistant_sso_sso_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -291,7 +395,7 @@ func (x *IsAdminResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use IsAdminResponse.ProtoReflect.Descriptor instead.
 func (*IsAdminResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_sso_sso_proto_rawDescGZIP(), []int{5}
+	return file_LibAssistant_sso_sso_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *IsAdminResponse) GetIsAdmin() bool {
@@ -315,14 +419,21 @@ const file_LibAssistant_sso_sso_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"%\n" +
 	"\rLoginResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\"3\n" +
-	"\x0eIsAdminRequest\x12!\n" +
-	"\fadmin_secret\x18\x01 \x01(\tR\vadminSecret\",\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\"m\n" +
+	"\x16RegisterAsAdminRequest\x12\x14\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12!\n" +
+	"\fadmin_secret\x18\x03 \x01(\tR\vadminSecret\"2\n" +
+	"\x17RegisterAsAdminResponse\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\")\n" +
+	"\x0eIsAdminRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\",\n" +
 	"\x0fIsAdminResponse\x12\x19\n" +
-	"\bis_admin\x18\x01 \x01(\bR\aisAdmin2\xab\x01\n" +
+	"\bis_admin\x18\x01 \x01(\bR\aisAdmin2\xfb\x01\n" +
 	"\x04Auth\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x126\n" +
+	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12N\n" +
+	"\x0fRegisterAsAdmin\x12\x1c.auth.RegisterAsAdminRequest\x1a\x1d.auth.RegisterAsAdminResponse\x126\n" +
 	"\aIsAdmin\x12\x14.auth.IsAdminRequest\x1a\x15.auth.IsAdminResponseB\x14Z\x12mkode.sso.v1;ssov1b\x06proto3"
 
 var (
@@ -337,24 +448,28 @@ func file_LibAssistant_sso_sso_proto_rawDescGZIP() []byte {
 	return file_LibAssistant_sso_sso_proto_rawDescData
 }
 
-var file_LibAssistant_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_LibAssistant_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_LibAssistant_sso_sso_proto_goTypes = []any{
-	(*RegisterRequest)(nil),  // 0: auth.RegisterRequest
-	(*RegisterResponse)(nil), // 1: auth.RegisterResponse
-	(*LoginRequest)(nil),     // 2: auth.LoginRequest
-	(*LoginResponse)(nil),    // 3: auth.LoginResponse
-	(*IsAdminRequest)(nil),   // 4: auth.IsAdminRequest
-	(*IsAdminResponse)(nil),  // 5: auth.IsAdminResponse
+	(*RegisterRequest)(nil),         // 0: auth.RegisterRequest
+	(*RegisterResponse)(nil),        // 1: auth.RegisterResponse
+	(*LoginRequest)(nil),            // 2: auth.LoginRequest
+	(*LoginResponse)(nil),           // 3: auth.LoginResponse
+	(*RegisterAsAdminRequest)(nil),  // 4: auth.RegisterAsAdminRequest
+	(*RegisterAsAdminResponse)(nil), // 5: auth.RegisterAsAdminResponse
+	(*IsAdminRequest)(nil),          // 6: auth.IsAdminRequest
+	(*IsAdminResponse)(nil),         // 7: auth.IsAdminResponse
 }
 var file_LibAssistant_sso_sso_proto_depIdxs = []int32{
 	0, // 0: auth.Auth.Register:input_type -> auth.RegisterRequest
 	2, // 1: auth.Auth.Login:input_type -> auth.LoginRequest
-	4, // 2: auth.Auth.IsAdmin:input_type -> auth.IsAdminRequest
-	1, // 3: auth.Auth.Register:output_type -> auth.RegisterResponse
-	3, // 4: auth.Auth.Login:output_type -> auth.LoginResponse
-	5, // 5: auth.Auth.IsAdmin:output_type -> auth.IsAdminResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	4, // 2: auth.Auth.RegisterAsAdmin:input_type -> auth.RegisterAsAdminRequest
+	6, // 3: auth.Auth.IsAdmin:input_type -> auth.IsAdminRequest
+	1, // 4: auth.Auth.Register:output_type -> auth.RegisterResponse
+	3, // 5: auth.Auth.Login:output_type -> auth.LoginResponse
+	5, // 6: auth.Auth.RegisterAsAdmin:output_type -> auth.RegisterAsAdminResponse
+	7, // 7: auth.Auth.IsAdmin:output_type -> auth.IsAdminResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -371,7 +486,7 @@ func file_LibAssistant_sso_sso_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_LibAssistant_sso_sso_proto_rawDesc), len(file_LibAssistant_sso_sso_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package books;
+
+option go_package = "mkode.books.v1;booksv1";
+
+service Books {
+    rpc AddBook(AddBookRequest) returns (AddBookResponse);
+    rpc TakeBook(TakeBookRequest) returns (TakeBookResponse);
+    rpc GetBook(GetBookRequest) returns (GetBookResponse);
+    rpc DeleteBook(DeleteBookRequest) returns (DeleteBookResponse);
+    rpc GetListOfBooks(GetListOfBooksRequest) returns (GetListOfBooksResponse);
+    rpc FilterBooksByGenreList(FilterBooksByGenreListRequest) returns (FilterBooksByGenreListResponse);
+}
+
+message AddBookRequest {
+    string genre = 1;
+    string title = 2;
+    int64 quantity = 3;
+}
+
+message AddBookResponse {
+    string bookID = 1;
+}
+
+message TakeBookRequest {
+    int64 take_copies = 1;
+}
+
+message TakeBookResponse {
+    Book book = 1;
+}
+
+message GetBookRequest {
+    string bookID = 1;
+}
+
+message GetBookResponse {
+    Book book = 1;
+}
+
+message DeleteBookRequest {
+    string bookID = 1;
+}
+
+message DeleteBookResponse {
+    bool success = 1;
+}
+
+message GetListOfBooksRequest {}
+
+message GetListOfBooksResponse {
+    repeated Book books = 1;
+}
+
+message FilterBooksByGenreListRequest {
+    string genre = 1;
+}
+
+message FilterBooksByGenreListResponse {
+    repeated Book filtered_books = 1;
+}
+
+
+
+message Book {
+    string title = 1;
+    int64 available_copies = 2;
+    string ID = 3;
+}
+

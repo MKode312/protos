@@ -24,7 +24,8 @@ message AddBookResponse {
 }
 
 message TakeBookRequest {
-    int64 take_copies = 1;
+    string bookID = 1;
+    int64 take_copies = 2;
 }
 
 message TakeBookResponse {
@@ -60,8 +61,6 @@ message FilterBooksByGenreListRequest {
 message FilterBooksByGenreListResponse {
     repeated Book filtered_books = 1;
 }
-
-
 
 message Book {
     string title = 1;

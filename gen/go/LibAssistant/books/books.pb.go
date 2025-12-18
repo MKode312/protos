@@ -127,7 +127,8 @@ func (x *AddBookResponse) GetBookID() string {
 
 type TakeBookRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	TakeCopies    int64                  `protobuf:"varint,1,opt,name=take_copies,json=takeCopies,proto3" json:"take_copies,omitempty"`
+	BookID        string                 `protobuf:"bytes,1,opt,name=bookID,proto3" json:"bookID,omitempty"`
+	TakeCopies    int64                  `protobuf:"varint,2,opt,name=take_copies,json=takeCopies,proto3" json:"take_copies,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -160,6 +161,13 @@ func (x *TakeBookRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use TakeBookRequest.ProtoReflect.Descriptor instead.
 func (*TakeBookRequest) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *TakeBookRequest) GetBookID() string {
+	if x != nil {
+		return x.BookID
+	}
+	return ""
 }
 
 func (x *TakeBookRequest) GetTakeCopies() int64 {
@@ -627,9 +635,10 @@ const file_LibAssistant_books_books_proto_rawDesc = "" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x1a\n" +
 	"\bquantity\x18\x03 \x01(\x03R\bquantity\")\n" +
 	"\x0fAddBookResponse\x12\x16\n" +
-	"\x06bookID\x18\x01 \x01(\tR\x06bookID\"2\n" +
-	"\x0fTakeBookRequest\x12\x1f\n" +
-	"\vtake_copies\x18\x01 \x01(\x03R\n" +
+	"\x06bookID\x18\x01 \x01(\tR\x06bookID\"J\n" +
+	"\x0fTakeBookRequest\x12\x16\n" +
+	"\x06bookID\x18\x01 \x01(\tR\x06bookID\x12\x1f\n" +
+	"\vtake_copies\x18\x02 \x01(\x03R\n" +
 	"takeCopies\"3\n" +
 	"\x10TakeBookResponse\x12\x1f\n" +
 	"\x04book\x18\x01 \x01(\v2\v.books.BookR\x04book\"(\n" +

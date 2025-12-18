@@ -29,7 +29,7 @@ message TakeBookRequest {
 }
 
 message TakeBookResponse {
-    Book book = 1;
+    bool success = 1;
 }
 
 message GetBookRequest {

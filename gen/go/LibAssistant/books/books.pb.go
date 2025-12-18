@@ -179,7 +179,7 @@ func (x *TakeBookRequest) GetTakeCopies() int64 {
 
 type TakeBookResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Book          *Book                  `protobuf:"bytes,1,opt,name=book,proto3" json:"book,omitempty"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -214,11 +214,11 @@ func (*TakeBookResponse) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *TakeBookResponse) GetBook() *Book {
+func (x *TakeBookResponse) GetSuccess() bool {
 	if x != nil {
-		return x.Book
+		return x.Success
 	}
-	return nil
+	return false
 }
 
 type GetBookRequest struct {
@@ -639,9 +639,9 @@ const file_LibAssistant_books_books_proto_rawDesc = "" +
 	"\x0fTakeBookRequest\x12\x16\n" +
 	"\x06bookID\x18\x01 \x01(\tR\x06bookID\x12\x1f\n" +
 	"\vtake_copies\x18\x02 \x01(\x03R\n" +
-	"takeCopies\"3\n" +
-	"\x10TakeBookResponse\x12\x1f\n" +
-	"\x04book\x18\x01 \x01(\v2\v.books.BookR\x04book\"(\n" +
+	"takeCopies\",\n" +
+	"\x10TakeBookResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"(\n" +
 	"\x0eGetBookRequest\x12\x16\n" +
 	"\x06bookID\x18\x01 \x01(\tR\x06bookID\"2\n" +
 	"\x0fGetBookResponse\x12\x1f\n" +
@@ -699,27 +699,26 @@ var file_LibAssistant_books_books_proto_goTypes = []any{
 	(*Book)(nil),                           // 12: books.Book
 }
 var file_LibAssistant_books_books_proto_depIdxs = []int32{
-	12, // 0: books.TakeBookResponse.book:type_name -> books.Book
-	12, // 1: books.GetBookResponse.book:type_name -> books.Book
-	12, // 2: books.GetListOfBooksResponse.books:type_name -> books.Book
-	12, // 3: books.FilterBooksByGenreListResponse.filtered_books:type_name -> books.Book
-	0,  // 4: books.Books.AddBook:input_type -> books.AddBookRequest
-	2,  // 5: books.Books.TakeBook:input_type -> books.TakeBookRequest
-	4,  // 6: books.Books.GetBook:input_type -> books.GetBookRequest
-	6,  // 7: books.Books.DeleteBook:input_type -> books.DeleteBookRequest
-	8,  // 8: books.Books.GetListOfBooks:input_type -> books.GetListOfBooksRequest
-	10, // 9: books.Books.FilterBooksByGenreList:input_type -> books.FilterBooksByGenreListRequest
-	1,  // 10: books.Books.AddBook:output_type -> books.AddBookResponse
-	3,  // 11: books.Books.TakeBook:output_type -> books.TakeBookResponse
-	5,  // 12: books.Books.GetBook:output_type -> books.GetBookResponse
-	7,  // 13: books.Books.DeleteBook:output_type -> books.DeleteBookResponse
-	9,  // 14: books.Books.GetListOfBooks:output_type -> books.GetListOfBooksResponse
-	11, // 15: books.Books.FilterBooksByGenreList:output_type -> books.FilterBooksByGenreListResponse
-	10, // [10:16] is the sub-list for method output_type
-	4,  // [4:10] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	12, // 0: books.GetBookResponse.book:type_name -> books.Book
+	12, // 1: books.GetListOfBooksResponse.books:type_name -> books.Book
+	12, // 2: books.FilterBooksByGenreListResponse.filtered_books:type_name -> books.Book
+	0,  // 3: books.Books.AddBook:input_type -> books.AddBookRequest
+	2,  // 4: books.Books.TakeBook:input_type -> books.TakeBookRequest
+	4,  // 5: books.Books.GetBook:input_type -> books.GetBookRequest
+	6,  // 6: books.Books.DeleteBook:input_type -> books.DeleteBookRequest
+	8,  // 7: books.Books.GetListOfBooks:input_type -> books.GetListOfBooksRequest
+	10, // 8: books.Books.FilterBooksByGenreList:input_type -> books.FilterBooksByGenreListRequest
+	1,  // 9: books.Books.AddBook:output_type -> books.AddBookResponse
+	3,  // 10: books.Books.TakeBook:output_type -> books.TakeBookResponse
+	5,  // 11: books.Books.GetBook:output_type -> books.GetBookResponse
+	7,  // 12: books.Books.DeleteBook:output_type -> books.DeleteBookResponse
+	9,  // 13: books.Books.GetListOfBooks:output_type -> books.GetListOfBooksResponse
+	11, // 14: books.Books.FilterBooksByGenreList:output_type -> books.FilterBooksByGenreListResponse
+	9,  // [9:15] is the sub-list for method output_type
+	3,  // [3:9] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_LibAssistant_books_books_proto_init() }

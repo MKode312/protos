@@ -568,8 +568,9 @@ func (x *FilterBooksByGenreListResponse) GetFilteredBooks() []*Book {
 type Book struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	Title           string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
-	AvailableCopies int64                  `protobuf:"varint,2,opt,name=available_copies,json=availableCopies,proto3" json:"available_copies,omitempty"`
-	ID              string                 `protobuf:"bytes,3,opt,name=ID,proto3" json:"ID,omitempty"`
+	Genre           string                 `protobuf:"bytes,2,opt,name=genre,proto3" json:"genre,omitempty"`
+	AvailableCopies int64                  `protobuf:"varint,3,opt,name=available_copies,json=availableCopies,proto3" json:"available_copies,omitempty"`
+	ID              string                 `protobuf:"bytes,4,opt,name=ID,proto3" json:"ID,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
@@ -607,6 +608,13 @@ func (*Book) Descriptor() ([]byte, []int) {
 func (x *Book) GetTitle() string {
 	if x != nil {
 		return x.Title
+	}
+	return ""
+}
+
+func (x *Book) GetGenre() string {
+	if x != nil {
+		return x.Genre
 	}
 	return ""
 }
@@ -656,11 +664,12 @@ const file_LibAssistant_books_books_proto_rawDesc = "" +
 	"\x1dFilterBooksByGenreListRequest\x12\x14\n" +
 	"\x05genre\x18\x01 \x01(\tR\x05genre\"T\n" +
 	"\x1eFilterBooksByGenreListResponse\x122\n" +
-	"\x0efiltered_books\x18\x01 \x03(\v2\v.books.BookR\rfilteredBooks\"W\n" +
+	"\x0efiltered_books\x18\x01 \x03(\v2\v.books.BookR\rfilteredBooks\"m\n" +
 	"\x04Book\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\x12)\n" +
-	"\x10available_copies\x18\x02 \x01(\x03R\x0favailableCopies\x12\x0e\n" +
-	"\x02ID\x18\x03 \x01(\tR\x02ID2\xb1\x03\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12\x14\n" +
+	"\x05genre\x18\x02 \x01(\tR\x05genre\x12)\n" +
+	"\x10available_copies\x18\x03 \x01(\x03R\x0favailableCopies\x12\x0e\n" +
+	"\x02ID\x18\x04 \x01(\tR\x02ID2\xb1\x03\n" +
 	"\x05Books\x128\n" +
 	"\aAddBook\x12\x15.books.AddBookRequest\x1a\x16.books.AddBookResponse\x12;\n" +
 	"\bTakeBook\x12\x16.books.TakeBookRequest\x1a\x17.books.TakeBookResponse\x128\n" +

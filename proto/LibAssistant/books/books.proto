@@ -64,7 +64,8 @@ message FilterBooksByGenreListResponse {
 
 message Book {
     string title = 1;
-    int64 available_copies = 2;
-    string ID = 3;
+    string genre = 2;
+    int64 available_copies = 3;
+    string ID = 4;
 }
 

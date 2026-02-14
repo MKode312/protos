@@ -42,11 +42,11 @@ message GetBookingsResponse {
 
 message BookRequest {
     string email = 1;
-    string boxName = 2;
-    int64 peopleAmount = 3;
-    string timeStart = 4;
-    int64 timeHrs = 5;
-    int64 timeMins = 6;
+    string box_name = 2;
+    int64 people_amount = 3;
+    string time_start = 4;
+    int64 time_hrs = 5;
+    int64 time_mins = 6;
 }
 
 message BookResponse {

@@ -4,14 +4,23 @@ package books;
 
 option go_package = "mkode.books.v1;booksv1";
 
+//Storing books and getting them
 service Books {
+    //Add book to storage
     rpc AddBook(AddBookRequest) returns (AddBookResponse);
+    //Take some copies of the book from the storage
     rpc TakeBook(TakeBookRequest) returns (TakeBookResponse);
+    //Get book by it's id (uuid)
     rpc GetBookByID(GetBookByIDRequest) returns (GetBookByIDResponse);
+    //Get book by it's title
     rpc GetBookByTitle(GetBookByTitleRequest) returns (GetBookByTitleResponse);
+    //Delete book by it's id
     rpc DeleteBook(DeleteBookRequest) returns (DeleteBookResponse);
+    //Add some copies to the existing book
     rpc AddCopies(AddCopiesRequest) returns (AddCopiesResponse);
+    //Get list of all books in the store
     rpc GetListOfBooks(GetListOfBooksRequest) returns (GetListOfBooksResponse);
+    //Get filtered list of books from the storage
     rpc FilterBooksByGenreList(FilterBooksByGenreListRequest) returns (FilterBooksByGenreListResponse);
 }
 
@@ -109,7 +118,7 @@ message Book {
     string title = 1;
     string genre = 2;
     int64 available_copies = 3;
-    string ID = 4;
+    string id = 4;
 }
 //-----Book-----//
 

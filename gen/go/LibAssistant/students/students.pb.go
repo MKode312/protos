@@ -21,7 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// -----Create Student-----//
+//-----Create Student-----//
 type CreateStudentRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
@@ -134,387 +134,7 @@ func (x *CreateStudentResponse) GetStudentId() string {
 	return ""
 }
 
-// -----Delete Student By ID-----//
-type DeleteStudentByIDRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteStudentByIDRequest) Reset() {
-	*x = DeleteStudentByIDRequest{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[2]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteStudentByIDRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteStudentByIDRequest) ProtoMessage() {}
-
-func (x *DeleteStudentByIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[2]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteStudentByIDRequest.ProtoReflect.Descriptor instead.
-func (*DeleteStudentByIDRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *DeleteStudentByIDRequest) GetStudentId() string {
-	if x != nil {
-		return x.StudentId
-	}
-	return ""
-}
-
-type DeleteStudentByIDResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *DeleteStudentByIDResponse) Reset() {
-	*x = DeleteStudentByIDResponse{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *DeleteStudentByIDResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*DeleteStudentByIDResponse) ProtoMessage() {}
-
-func (x *DeleteStudentByIDResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use DeleteStudentByIDResponse.ProtoReflect.Descriptor instead.
-func (*DeleteStudentByIDResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *DeleteStudentByIDResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-// -----Update Full Name Of Student-----//
-type UpdateFullNameOfStudentRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
-	FullName      string                 `protobuf:"bytes,2,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateFullNameOfStudentRequest) Reset() {
-	*x = UpdateFullNameOfStudentRequest{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[4]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateFullNameOfStudentRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateFullNameOfStudentRequest) ProtoMessage() {}
-
-func (x *UpdateFullNameOfStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[4]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateFullNameOfStudentRequest.ProtoReflect.Descriptor instead.
-func (*UpdateFullNameOfStudentRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *UpdateFullNameOfStudentRequest) GetStudentId() string {
-	if x != nil {
-		return x.StudentId
-	}
-	return ""
-}
-
-func (x *UpdateFullNameOfStudentRequest) GetFullName() string {
-	if x != nil {
-		return x.FullName
-	}
-	return ""
-}
-
-type UpdateFullNameOfStudentResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Student       *Student               `protobuf:"bytes,1,opt,name=student,proto3" json:"student,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateFullNameOfStudentResponse) Reset() {
-	*x = UpdateFullNameOfStudentResponse{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateFullNameOfStudentResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateFullNameOfStudentResponse) ProtoMessage() {}
-
-func (x *UpdateFullNameOfStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateFullNameOfStudentResponse.ProtoReflect.Descriptor instead.
-func (*UpdateFullNameOfStudentResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UpdateFullNameOfStudentResponse) GetStudent() *Student {
-	if x != nil {
-		return x.Student
-	}
-	return nil
-}
-
-// -----Update Grade Of Student-----//
-type UpdateGradeOfStudentRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
-	Grade         int32                  `protobuf:"varint,2,opt,name=grade,proto3" json:"grade,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateGradeOfStudentRequest) Reset() {
-	*x = UpdateGradeOfStudentRequest{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[6]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateGradeOfStudentRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateGradeOfStudentRequest) ProtoMessage() {}
-
-func (x *UpdateGradeOfStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[6]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateGradeOfStudentRequest.ProtoReflect.Descriptor instead.
-func (*UpdateGradeOfStudentRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *UpdateGradeOfStudentRequest) GetStudentId() string {
-	if x != nil {
-		return x.StudentId
-	}
-	return ""
-}
-
-func (x *UpdateGradeOfStudentRequest) GetGrade() int32 {
-	if x != nil {
-		return x.Grade
-	}
-	return 0
-}
-
-type UpdateGradeOfStudentResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Student       *Student               `protobuf:"bytes,1,opt,name=student,proto3" json:"student,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateGradeOfStudentResponse) Reset() {
-	*x = UpdateGradeOfStudentResponse{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[7]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateGradeOfStudentResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateGradeOfStudentResponse) ProtoMessage() {}
-
-func (x *UpdateGradeOfStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[7]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateGradeOfStudentResponse.ProtoReflect.Descriptor instead.
-func (*UpdateGradeOfStudentResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *UpdateGradeOfStudentResponse) GetStudent() *Student {
-	if x != nil {
-		return x.Student
-	}
-	return nil
-}
-
-// -----Update Letter Of Student-----//
-type UpdateLetterOfStudentRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
-	Letter        string                 `protobuf:"bytes,2,opt,name=letter,proto3" json:"letter,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateLetterOfStudentRequest) Reset() {
-	*x = UpdateLetterOfStudentRequest{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[8]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateLetterOfStudentRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateLetterOfStudentRequest) ProtoMessage() {}
-
-func (x *UpdateLetterOfStudentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[8]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateLetterOfStudentRequest.ProtoReflect.Descriptor instead.
-func (*UpdateLetterOfStudentRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *UpdateLetterOfStudentRequest) GetStudentId() string {
-	if x != nil {
-		return x.StudentId
-	}
-	return ""
-}
-
-func (x *UpdateLetterOfStudentRequest) GetLetter() string {
-	if x != nil {
-		return x.Letter
-	}
-	return ""
-}
-
-type UpdateLetterOfStudentResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Student       *Student               `protobuf:"bytes,1,opt,name=student,proto3" json:"student,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateLetterOfStudentResponse) Reset() {
-	*x = UpdateLetterOfStudentResponse{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[9]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateLetterOfStudentResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateLetterOfStudentResponse) ProtoMessage() {}
-
-func (x *UpdateLetterOfStudentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[9]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateLetterOfStudentResponse.ProtoReflect.Descriptor instead.
-func (*UpdateLetterOfStudentResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *UpdateLetterOfStudentResponse) GetStudent() *Student {
-	if x != nil {
-		return x.Student
-	}
-	return nil
-}
-
-// -----Get Student By ID-----//
+//-----Get Student By ID-----//
 type GetStudentByIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
@@ -524,7 +144,7 @@ type GetStudentByIDRequest struct {
 
 func (x *GetStudentByIDRequest) Reset() {
 	*x = GetStudentByIDRequest{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[10]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -536,7 +156,7 @@ func (x *GetStudentByIDRequest) String() string {
 func (*GetStudentByIDRequest) ProtoMessage() {}
 
 func (x *GetStudentByIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[10]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -549,7 +169,7 @@ func (x *GetStudentByIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentByIDRequest.ProtoReflect.Descriptor instead.
 func (*GetStudentByIDRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{10}
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *GetStudentByIDRequest) GetStudentId() string {
@@ -568,7 +188,7 @@ type GetStudentByIDResponse struct {
 
 func (x *GetStudentByIDResponse) Reset() {
 	*x = GetStudentByIDResponse{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[11]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -580,7 +200,7 @@ func (x *GetStudentByIDResponse) String() string {
 func (*GetStudentByIDResponse) ProtoMessage() {}
 
 func (x *GetStudentByIDResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[11]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -593,7 +213,7 @@ func (x *GetStudentByIDResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentByIDResponse.ProtoReflect.Descriptor instead.
 func (*GetStudentByIDResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{11}
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetStudentByIDResponse) GetStudent() *Student {
@@ -603,7 +223,7 @@ func (x *GetStudentByIDResponse) GetStudent() *Student {
 	return nil
 }
 
-// -----Get Student By Full Name-----//
+//-----Get Student By Full Name-----//
 type GetStudentByFullNameRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	FullName      string                 `protobuf:"bytes,1,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
@@ -615,7 +235,7 @@ type GetStudentByFullNameRequest struct {
 
 func (x *GetStudentByFullNameRequest) Reset() {
 	*x = GetStudentByFullNameRequest{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[12]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -627,7 +247,7 @@ func (x *GetStudentByFullNameRequest) String() string {
 func (*GetStudentByFullNameRequest) ProtoMessage() {}
 
 func (x *GetStudentByFullNameRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[12]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -640,7 +260,7 @@ func (x *GetStudentByFullNameRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentByFullNameRequest.ProtoReflect.Descriptor instead.
 func (*GetStudentByFullNameRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{12}
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetStudentByFullNameRequest) GetFullName() string {
@@ -673,7 +293,7 @@ type GetStudentByFullNameResponse struct {
 
 func (x *GetStudentByFullNameResponse) Reset() {
 	*x = GetStudentByFullNameResponse{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[13]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -685,7 +305,7 @@ func (x *GetStudentByFullNameResponse) String() string {
 func (*GetStudentByFullNameResponse) ProtoMessage() {}
 
 func (x *GetStudentByFullNameResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[13]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -698,7 +318,7 @@ func (x *GetStudentByFullNameResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentByFullNameResponse.ProtoReflect.Descriptor instead.
 func (*GetStudentByFullNameResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{13}
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *GetStudentByFullNameResponse) GetStudent() *Student {
@@ -708,8 +328,8 @@ func (x *GetStudentByFullNameResponse) GetStudent() *Student {
 	return nil
 }
 
-// -----Get Grade-----//
-type GetGradeRequest struct {
+//-----Get Class-----//
+type GetClassRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Grade         int32                  `protobuf:"varint,1,opt,name=grade,proto3" json:"grade,omitempty"`
 	Letter        string                 `protobuf:"bytes,2,opt,name=letter,proto3" json:"letter,omitempty"`
@@ -717,21 +337,21 @@ type GetGradeRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetGradeRequest) Reset() {
-	*x = GetGradeRequest{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[14]
+func (x *GetClassRequest) Reset() {
+	*x = GetClassRequest{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetGradeRequest) String() string {
+func (x *GetClassRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetGradeRequest) ProtoMessage() {}
+func (*GetClassRequest) ProtoMessage() {}
 
-func (x *GetGradeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[14]
+func (x *GetClassRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -742,47 +362,47 @@ func (x *GetGradeRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetGradeRequest.ProtoReflect.Descriptor instead.
-func (*GetGradeRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{14}
+// Deprecated: Use GetClassRequest.ProtoReflect.Descriptor instead.
+func (*GetClassRequest) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetGradeRequest) GetGrade() int32 {
+func (x *GetClassRequest) GetGrade() int32 {
 	if x != nil {
 		return x.Grade
 	}
 	return 0
 }
 
-func (x *GetGradeRequest) GetLetter() string {
+func (x *GetClassRequest) GetLetter() string {
 	if x != nil {
 		return x.Letter
 	}
 	return ""
 }
 
-type GetGradeResponse struct {
+type GetClassResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Student       []*Student             `protobuf:"bytes,1,rep,name=student,proto3" json:"student,omitempty"`
+	Students      []*Student             `protobuf:"bytes,1,rep,name=students,proto3" json:"students,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetGradeResponse) Reset() {
-	*x = GetGradeResponse{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[15]
+func (x *GetClassResponse) Reset() {
+	*x = GetClassResponse{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetGradeResponse) String() string {
+func (x *GetClassResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetGradeResponse) ProtoMessage() {}
+func (*GetClassResponse) ProtoMessage() {}
 
-func (x *GetGradeResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[15]
+func (x *GetClassResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -793,19 +413,19 @@ func (x *GetGradeResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetGradeResponse.ProtoReflect.Descriptor instead.
-func (*GetGradeResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{15}
+// Deprecated: Use GetClassResponse.ProtoReflect.Descriptor instead.
+func (*GetClassResponse) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *GetGradeResponse) GetStudent() []*Student {
+func (x *GetClassResponse) GetStudents() []*Student {
 	if x != nil {
-		return x.Student
+		return x.Students
 	}
 	return nil
 }
 
-// -----Get Parallel-----//
+//-----Get Parallel-----//
 type GetParallelRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Grade         int32                  `protobuf:"varint,1,opt,name=grade,proto3" json:"grade,omitempty"`
@@ -815,7 +435,7 @@ type GetParallelRequest struct {
 
 func (x *GetParallelRequest) Reset() {
 	*x = GetParallelRequest{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[16]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -827,7 +447,7 @@ func (x *GetParallelRequest) String() string {
 func (*GetParallelRequest) ProtoMessage() {}
 
 func (x *GetParallelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[16]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -840,7 +460,7 @@ func (x *GetParallelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetParallelRequest.ProtoReflect.Descriptor instead.
 func (*GetParallelRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{16}
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *GetParallelRequest) GetGrade() int32 {
@@ -852,14 +472,14 @@ func (x *GetParallelRequest) GetGrade() int32 {
 
 type GetParallelResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Student       []*Student             `protobuf:"bytes,1,rep,name=student,proto3" json:"student,omitempty"`
+	Students      []*Student             `protobuf:"bytes,1,rep,name=students,proto3" json:"students,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *GetParallelResponse) Reset() {
 	*x = GetParallelResponse{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[17]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -871,7 +491,7 @@ func (x *GetParallelResponse) String() string {
 func (*GetParallelResponse) ProtoMessage() {}
 
 func (x *GetParallelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[17]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -884,17 +504,17 @@ func (x *GetParallelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetParallelResponse.ProtoReflect.Descriptor instead.
 func (*GetParallelResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{17}
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *GetParallelResponse) GetStudent() []*Student {
+func (x *GetParallelResponse) GetStudents() []*Student {
 	if x != nil {
-		return x.Student
+		return x.Students
 	}
 	return nil
 }
 
-// -----Get Student Stats-----//
+//-----Get Student Stats-----//
 type GetStudentStatsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
@@ -904,7 +524,7 @@ type GetStudentStatsRequest struct {
 
 func (x *GetStudentStatsRequest) Reset() {
 	*x = GetStudentStatsRequest{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[18]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -916,7 +536,7 @@ func (x *GetStudentStatsRequest) String() string {
 func (*GetStudentStatsRequest) ProtoMessage() {}
 
 func (x *GetStudentStatsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[18]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -929,7 +549,7 @@ func (x *GetStudentStatsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentStatsRequest.ProtoReflect.Descriptor instead.
 func (*GetStudentStatsRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{18}
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetStudentStatsRequest) GetStudentId() string {
@@ -949,7 +569,7 @@ type GetStudentStatsResponse struct {
 
 func (x *GetStudentStatsResponse) Reset() {
 	*x = GetStudentStatsResponse{}
-	mi := &file_LibAssistant_students_students_proto_msgTypes[19]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -961,7 +581,7 @@ func (x *GetStudentStatsResponse) String() string {
 func (*GetStudentStatsResponse) ProtoMessage() {}
 
 func (x *GetStudentStatsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_students_students_proto_msgTypes[19]
+	mi := &file_LibAssistant_students_students_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -974,7 +594,7 @@ func (x *GetStudentStatsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetStudentStatsResponse.ProtoReflect.Descriptor instead.
 func (*GetStudentStatsResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{19}
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetStudentStatsResponse) GetStudent() *Student {
@@ -991,7 +611,387 @@ func (x *GetStudentStatsResponse) GetBooksTaken() int64 {
 	return 0
 }
 
-// -----Student-----//
+//-----Update Full Name Of Student-----//
+type UpdateFullNameOfStudentRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	FullName      string                 `protobuf:"bytes,2,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateFullNameOfStudentRequest) Reset() {
+	*x = UpdateFullNameOfStudentRequest{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateFullNameOfStudentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateFullNameOfStudentRequest) ProtoMessage() {}
+
+func (x *UpdateFullNameOfStudentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateFullNameOfStudentRequest.ProtoReflect.Descriptor instead.
+func (*UpdateFullNameOfStudentRequest) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *UpdateFullNameOfStudentRequest) GetStudentId() string {
+	if x != nil {
+		return x.StudentId
+	}
+	return ""
+}
+
+func (x *UpdateFullNameOfStudentRequest) GetFullName() string {
+	if x != nil {
+		return x.FullName
+	}
+	return ""
+}
+
+type UpdateFullNameOfStudentResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Student       *Student               `protobuf:"bytes,1,opt,name=student,proto3" json:"student,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateFullNameOfStudentResponse) Reset() {
+	*x = UpdateFullNameOfStudentResponse{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateFullNameOfStudentResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateFullNameOfStudentResponse) ProtoMessage() {}
+
+func (x *UpdateFullNameOfStudentResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateFullNameOfStudentResponse.ProtoReflect.Descriptor instead.
+func (*UpdateFullNameOfStudentResponse) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *UpdateFullNameOfStudentResponse) GetStudent() *Student {
+	if x != nil {
+		return x.Student
+	}
+	return nil
+}
+
+//-----Update Grade Of Student-----//
+type UpdateGradeOfStudentRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	Grade         int32                  `protobuf:"varint,2,opt,name=grade,proto3" json:"grade,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateGradeOfStudentRequest) Reset() {
+	*x = UpdateGradeOfStudentRequest{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateGradeOfStudentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateGradeOfStudentRequest) ProtoMessage() {}
+
+func (x *UpdateGradeOfStudentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateGradeOfStudentRequest.ProtoReflect.Descriptor instead.
+func (*UpdateGradeOfStudentRequest) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *UpdateGradeOfStudentRequest) GetStudentId() string {
+	if x != nil {
+		return x.StudentId
+	}
+	return ""
+}
+
+func (x *UpdateGradeOfStudentRequest) GetGrade() int32 {
+	if x != nil {
+		return x.Grade
+	}
+	return 0
+}
+
+type UpdateGradeOfStudentResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Student       *Student               `protobuf:"bytes,1,opt,name=student,proto3" json:"student,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateGradeOfStudentResponse) Reset() {
+	*x = UpdateGradeOfStudentResponse{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateGradeOfStudentResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateGradeOfStudentResponse) ProtoMessage() {}
+
+func (x *UpdateGradeOfStudentResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateGradeOfStudentResponse.ProtoReflect.Descriptor instead.
+func (*UpdateGradeOfStudentResponse) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *UpdateGradeOfStudentResponse) GetStudent() *Student {
+	if x != nil {
+		return x.Student
+	}
+	return nil
+}
+
+//-----Update Letter Of Student-----//
+type UpdateLetterOfStudentRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	Letter        string                 `protobuf:"bytes,2,opt,name=letter,proto3" json:"letter,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateLetterOfStudentRequest) Reset() {
+	*x = UpdateLetterOfStudentRequest{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateLetterOfStudentRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateLetterOfStudentRequest) ProtoMessage() {}
+
+func (x *UpdateLetterOfStudentRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateLetterOfStudentRequest.ProtoReflect.Descriptor instead.
+func (*UpdateLetterOfStudentRequest) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *UpdateLetterOfStudentRequest) GetStudentId() string {
+	if x != nil {
+		return x.StudentId
+	}
+	return ""
+}
+
+func (x *UpdateLetterOfStudentRequest) GetLetter() string {
+	if x != nil {
+		return x.Letter
+	}
+	return ""
+}
+
+type UpdateLetterOfStudentResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Student       *Student               `protobuf:"bytes,1,opt,name=student,proto3" json:"student,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateLetterOfStudentResponse) Reset() {
+	*x = UpdateLetterOfStudentResponse{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateLetterOfStudentResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateLetterOfStudentResponse) ProtoMessage() {}
+
+func (x *UpdateLetterOfStudentResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateLetterOfStudentResponse.ProtoReflect.Descriptor instead.
+func (*UpdateLetterOfStudentResponse) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *UpdateLetterOfStudentResponse) GetStudent() *Student {
+	if x != nil {
+		return x.Student
+	}
+	return nil
+}
+
+//-----Delete Student By ID-----//
+type DeleteStudentByIDRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	StudentId     string                 `protobuf:"bytes,1,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteStudentByIDRequest) Reset() {
+	*x = DeleteStudentByIDRequest{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteStudentByIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteStudentByIDRequest) ProtoMessage() {}
+
+func (x *DeleteStudentByIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteStudentByIDRequest.ProtoReflect.Descriptor instead.
+func (*DeleteStudentByIDRequest) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *DeleteStudentByIDRequest) GetStudentId() string {
+	if x != nil {
+		return x.StudentId
+	}
+	return ""
+}
+
+type DeleteStudentByIDResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteStudentByIDResponse) Reset() {
+	*x = DeleteStudentByIDResponse{}
+	mi := &file_LibAssistant_students_students_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteStudentByIDResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteStudentByIDResponse) ProtoMessage() {}
+
+func (x *DeleteStudentByIDResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_students_students_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteStudentByIDResponse.ProtoReflect.Descriptor instead.
+func (*DeleteStudentByIDResponse) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_students_students_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *DeleteStudentByIDResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+//-----Student-----//
 type Student struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -1073,12 +1073,34 @@ const file_LibAssistant_students_students_proto_rawDesc = "" +
 	"\x06letter\x18\x04 \x01(\tR\x06letter\"6\n" +
 	"\x15CreateStudentResponse\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x01 \x01(\tR\tstudentId\"9\n" +
-	"\x18DeleteStudentByIDRequest\x12\x1d\n" +
+	"student_id\x18\x01 \x01(\tR\tstudentId\"6\n" +
+	"\x15GetStudentByIDRequest\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x01 \x01(\tR\tstudentId\"5\n" +
-	"\x19DeleteStudentByIDResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\\\n" +
+	"student_id\x18\x01 \x01(\tR\tstudentId\"E\n" +
+	"\x16GetStudentByIDResponse\x12+\n" +
+	"\astudent\x18\x01 \x01(\v2\x11.students.StudentR\astudent\"h\n" +
+	"\x1bGetStudentByFullNameRequest\x12\x1b\n" +
+	"\tfull_name\x18\x01 \x01(\tR\bfullName\x12\x14\n" +
+	"\x05grade\x18\x02 \x01(\x05R\x05grade\x12\x16\n" +
+	"\x06letter\x18\x03 \x01(\tR\x06letter\"K\n" +
+	"\x1cGetStudentByFullNameResponse\x12+\n" +
+	"\astudent\x18\x01 \x01(\v2\x11.students.StudentR\astudent\"?\n" +
+	"\x0fGetClassRequest\x12\x14\n" +
+	"\x05grade\x18\x01 \x01(\x05R\x05grade\x12\x16\n" +
+	"\x06letter\x18\x02 \x01(\tR\x06letter\"A\n" +
+	"\x10GetClassResponse\x12-\n" +
+	"\bstudents\x18\x01 \x03(\v2\x11.students.StudentR\bstudents\"*\n" +
+	"\x12GetParallelRequest\x12\x14\n" +
+	"\x05grade\x18\x01 \x01(\x05R\x05grade\"D\n" +
+	"\x13GetParallelResponse\x12-\n" +
+	"\bstudents\x18\x01 \x03(\v2\x11.students.StudentR\bstudents\"7\n" +
+	"\x16GetStudentStatsRequest\x12\x1d\n" +
+	"\n" +
+	"student_id\x18\x01 \x01(\tR\tstudentId\"g\n" +
+	"\x17GetStudentStatsResponse\x12+\n" +
+	"\astudent\x18\x01 \x01(\v2\x11.students.StudentR\astudent\x12\x1f\n" +
+	"\vbooks_taken\x18\x02 \x01(\x03R\n" +
+	"booksTaken\"\\\n" +
 	"\x1eUpdateFullNameOfStudentRequest\x12\x1d\n" +
 	"\n" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12\x1b\n" +
@@ -1096,50 +1118,28 @@ const file_LibAssistant_students_students_proto_rawDesc = "" +
 	"student_id\x18\x01 \x01(\tR\tstudentId\x12\x16\n" +
 	"\x06letter\x18\x02 \x01(\tR\x06letter\"L\n" +
 	"\x1dUpdateLetterOfStudentResponse\x12+\n" +
-	"\astudent\x18\x01 \x01(\v2\x11.students.StudentR\astudent\"6\n" +
-	"\x15GetStudentByIDRequest\x12\x1d\n" +
+	"\astudent\x18\x01 \x01(\v2\x11.students.StudentR\astudent\"9\n" +
+	"\x18DeleteStudentByIDRequest\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x01 \x01(\tR\tstudentId\"E\n" +
-	"\x16GetStudentByIDResponse\x12+\n" +
-	"\astudent\x18\x01 \x01(\v2\x11.students.StudentR\astudent\"h\n" +
-	"\x1bGetStudentByFullNameRequest\x12\x1b\n" +
-	"\tfull_name\x18\x01 \x01(\tR\bfullName\x12\x14\n" +
-	"\x05grade\x18\x02 \x01(\x05R\x05grade\x12\x16\n" +
-	"\x06letter\x18\x03 \x01(\tR\x06letter\"K\n" +
-	"\x1cGetStudentByFullNameResponse\x12+\n" +
-	"\astudent\x18\x01 \x01(\v2\x11.students.StudentR\astudent\"?\n" +
-	"\x0fGetGradeRequest\x12\x14\n" +
-	"\x05grade\x18\x01 \x01(\x05R\x05grade\x12\x16\n" +
-	"\x06letter\x18\x02 \x01(\tR\x06letter\"?\n" +
-	"\x10GetGradeResponse\x12+\n" +
-	"\astudent\x18\x01 \x03(\v2\x11.students.StudentR\astudent\"*\n" +
-	"\x12GetParallelRequest\x12\x14\n" +
-	"\x05grade\x18\x01 \x01(\x05R\x05grade\"B\n" +
-	"\x13GetParallelResponse\x12+\n" +
-	"\astudent\x18\x01 \x03(\v2\x11.students.StudentR\astudent\"7\n" +
-	"\x16GetStudentStatsRequest\x12\x1d\n" +
-	"\n" +
-	"student_id\x18\x01 \x01(\tR\tstudentId\"g\n" +
-	"\x17GetStudentStatsResponse\x12+\n" +
-	"\astudent\x18\x01 \x01(\v2\x11.students.StudentR\astudent\x12\x1f\n" +
-	"\vbooks_taken\x18\x02 \x01(\x03R\n" +
-	"booksTaken\"d\n" +
+	"student_id\x18\x01 \x01(\tR\tstudentId\"5\n" +
+	"\x19DeleteStudentByIDResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"d\n" +
 	"\aStudent\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\tfull_name\x18\x02 \x01(\tR\bfullName\x12\x14\n" +
 	"\x05grade\x18\x03 \x01(\x05R\x05grade\x12\x16\n" +
 	"\x06letter\x18\x04 \x01(\tR\x06letter2\xb9\a\n" +
 	"\x0fStudentsService\x12R\n" +
-	"\rCreateStudent\x12\x1e.students.CreateStudentRequest\x1a\x1f.students.CreateStudentResponse\"\x00\x12^\n" +
-	"\x11DeleteStudentByID\x12\".students.DeleteStudentByIDRequest\x1a#.students.DeleteStudentByIDResponse\"\x00\x12p\n" +
-	"\x17UpdateFullNameOfStudent\x12(.students.UpdateFullNameOfStudentRequest\x1a).students.UpdateFullNameOfStudentResponse\"\x00\x12g\n" +
-	"\x14UpdateGradeOfStudent\x12%.students.UpdateGradeOfStudentRequest\x1a&.students.UpdateGradeOfStudentResponse\"\x00\x12j\n" +
-	"\x15UpdateLetterOfStudent\x12&.students.UpdateLetterOfStudentRequest\x1a'.students.UpdateLetterOfStudentResponse\"\x00\x12U\n" +
+	"\rCreateStudent\x12\x1e.students.CreateStudentRequest\x1a\x1f.students.CreateStudentResponse\"\x00\x12U\n" +
 	"\x0eGetStudentByID\x12\x1f.students.GetStudentByIDRequest\x1a .students.GetStudentByIDResponse\"\x00\x12g\n" +
 	"\x14GetStudentByFullName\x12%.students.GetStudentByFullNameRequest\x1a&.students.GetStudentByFullNameResponse\"\x00\x12C\n" +
-	"\bGetGrade\x12\x19.students.GetGradeRequest\x1a\x1a.students.GetGradeResponse\"\x00\x12L\n" +
+	"\bGetClass\x12\x19.students.GetClassRequest\x1a\x1a.students.GetClassResponse\"\x00\x12L\n" +
 	"\vGetParallel\x12\x1c.students.GetParallelRequest\x1a\x1d.students.GetParallelResponse\"\x00\x12X\n" +
-	"\x0fGetStudentStats\x12 .students.GetStudentStatsRequest\x1a!.students.GetStudentStatsResponse\"\x00B\x1bZ\x19mkode.issue.v1;studentsv1b\x06proto3"
+	"\x0fGetStudentStats\x12 .students.GetStudentStatsRequest\x1a!.students.GetStudentStatsResponse\"\x00\x12p\n" +
+	"\x17UpdateFullNameOfStudent\x12(.students.UpdateFullNameOfStudentRequest\x1a).students.UpdateFullNameOfStudentResponse\"\x00\x12g\n" +
+	"\x14UpdateGradeOfStudent\x12%.students.UpdateGradeOfStudentRequest\x1a&.students.UpdateGradeOfStudentResponse\"\x00\x12j\n" +
+	"\x15UpdateLetterOfStudent\x12&.students.UpdateLetterOfStudentRequest\x1a'.students.UpdateLetterOfStudentResponse\"\x00\x12^\n" +
+	"\x11DeleteStudentByID\x12\".students.DeleteStudentByIDRequest\x1a#.students.DeleteStudentByIDResponse\"\x00B\x1eZ\x1cmkode.students.v1;studentsv1b\x06proto3"
 
 var (
 	file_LibAssistant_students_students_proto_rawDescOnce sync.Once
@@ -1157,55 +1157,55 @@ var file_LibAssistant_students_students_proto_msgTypes = make([]protoimpl.Messag
 var file_LibAssistant_students_students_proto_goTypes = []any{
 	(*CreateStudentRequest)(nil),            // 0: students.CreateStudentRequest
 	(*CreateStudentResponse)(nil),           // 1: students.CreateStudentResponse
-	(*DeleteStudentByIDRequest)(nil),        // 2: students.DeleteStudentByIDRequest
-	(*DeleteStudentByIDResponse)(nil),       // 3: students.DeleteStudentByIDResponse
-	(*UpdateFullNameOfStudentRequest)(nil),  // 4: students.UpdateFullNameOfStudentRequest
-	(*UpdateFullNameOfStudentResponse)(nil), // 5: students.UpdateFullNameOfStudentResponse
-	(*UpdateGradeOfStudentRequest)(nil),     // 6: students.UpdateGradeOfStudentRequest
-	(*UpdateGradeOfStudentResponse)(nil),    // 7: students.UpdateGradeOfStudentResponse
-	(*UpdateLetterOfStudentRequest)(nil),    // 8: students.UpdateLetterOfStudentRequest
-	(*UpdateLetterOfStudentResponse)(nil),   // 9: students.UpdateLetterOfStudentResponse
-	(*GetStudentByIDRequest)(nil),           // 10: students.GetStudentByIDRequest
-	(*GetStudentByIDResponse)(nil),          // 11: students.GetStudentByIDResponse
-	(*GetStudentByFullNameRequest)(nil),     // 12: students.GetStudentByFullNameRequest
-	(*GetStudentByFullNameResponse)(nil),    // 13: students.GetStudentByFullNameResponse
-	(*GetGradeRequest)(nil),                 // 14: students.GetGradeRequest
-	(*GetGradeResponse)(nil),                // 15: students.GetGradeResponse
-	(*GetParallelRequest)(nil),              // 16: students.GetParallelRequest
-	(*GetParallelResponse)(nil),             // 17: students.GetParallelResponse
-	(*GetStudentStatsRequest)(nil),          // 18: students.GetStudentStatsRequest
-	(*GetStudentStatsResponse)(nil),         // 19: students.GetStudentStatsResponse
+	(*GetStudentByIDRequest)(nil),           // 2: students.GetStudentByIDRequest
+	(*GetStudentByIDResponse)(nil),          // 3: students.GetStudentByIDResponse
+	(*GetStudentByFullNameRequest)(nil),     // 4: students.GetStudentByFullNameRequest
+	(*GetStudentByFullNameResponse)(nil),    // 5: students.GetStudentByFullNameResponse
+	(*GetClassRequest)(nil),                 // 6: students.GetClassRequest
+	(*GetClassResponse)(nil),                // 7: students.GetClassResponse
+	(*GetParallelRequest)(nil),              // 8: students.GetParallelRequest
+	(*GetParallelResponse)(nil),             // 9: students.GetParallelResponse
+	(*GetStudentStatsRequest)(nil),          // 10: students.GetStudentStatsRequest
+	(*GetStudentStatsResponse)(nil),         // 11: students.GetStudentStatsResponse
+	(*UpdateFullNameOfStudentRequest)(nil),  // 12: students.UpdateFullNameOfStudentRequest
+	(*UpdateFullNameOfStudentResponse)(nil), // 13: students.UpdateFullNameOfStudentResponse
+	(*UpdateGradeOfStudentRequest)(nil),     // 14: students.UpdateGradeOfStudentRequest
+	(*UpdateGradeOfStudentResponse)(nil),    // 15: students.UpdateGradeOfStudentResponse
+	(*UpdateLetterOfStudentRequest)(nil),    // 16: students.UpdateLetterOfStudentRequest
+	(*UpdateLetterOfStudentResponse)(nil),   // 17: students.UpdateLetterOfStudentResponse
+	(*DeleteStudentByIDRequest)(nil),        // 18: students.DeleteStudentByIDRequest
+	(*DeleteStudentByIDResponse)(nil),       // 19: students.DeleteStudentByIDResponse
 	(*Student)(nil),                         // 20: students.Student
 }
 var file_LibAssistant_students_students_proto_depIdxs = []int32{
-	20, // 0: students.UpdateFullNameOfStudentResponse.student:type_name -> students.Student
-	20, // 1: students.UpdateGradeOfStudentResponse.student:type_name -> students.Student
-	20, // 2: students.UpdateLetterOfStudentResponse.student:type_name -> students.Student
-	20, // 3: students.GetStudentByIDResponse.student:type_name -> students.Student
-	20, // 4: students.GetStudentByFullNameResponse.student:type_name -> students.Student
-	20, // 5: students.GetGradeResponse.student:type_name -> students.Student
-	20, // 6: students.GetParallelResponse.student:type_name -> students.Student
-	20, // 7: students.GetStudentStatsResponse.student:type_name -> students.Student
+	20, // 0: students.GetStudentByIDResponse.student:type_name -> students.Student
+	20, // 1: students.GetStudentByFullNameResponse.student:type_name -> students.Student
+	20, // 2: students.GetClassResponse.students:type_name -> students.Student
+	20, // 3: students.GetParallelResponse.students:type_name -> students.Student
+	20, // 4: students.GetStudentStatsResponse.student:type_name -> students.Student
+	20, // 5: students.UpdateFullNameOfStudentResponse.student:type_name -> students.Student
+	20, // 6: students.UpdateGradeOfStudentResponse.student:type_name -> students.Student
+	20, // 7: students.UpdateLetterOfStudentResponse.student:type_name -> students.Student
 	0,  // 8: students.StudentsService.CreateStudent:input_type -> students.CreateStudentRequest
-	2,  // 9: students.StudentsService.DeleteStudentByID:input_type -> students.DeleteStudentByIDRequest
-	4,  // 10: students.StudentsService.UpdateFullNameOfStudent:input_type -> students.UpdateFullNameOfStudentRequest
-	6,  // 11: students.StudentsService.UpdateGradeOfStudent:input_type -> students.UpdateGradeOfStudentRequest
-	8,  // 12: students.StudentsService.UpdateLetterOfStudent:input_type -> students.UpdateLetterOfStudentRequest
-	10, // 13: students.StudentsService.GetStudentByID:input_type -> students.GetStudentByIDRequest
-	12, // 14: students.StudentsService.GetStudentByFullName:input_type -> students.GetStudentByFullNameRequest
-	14, // 15: students.StudentsService.GetGrade:input_type -> students.GetGradeRequest
-	16, // 16: students.StudentsService.GetParallel:input_type -> students.GetParallelRequest
-	18, // 17: students.StudentsService.GetStudentStats:input_type -> students.GetStudentStatsRequest
+	2,  // 9: students.StudentsService.GetStudentByID:input_type -> students.GetStudentByIDRequest
+	4,  // 10: students.StudentsService.GetStudentByFullName:input_type -> students.GetStudentByFullNameRequest
+	6,  // 11: students.StudentsService.GetClass:input_type -> students.GetClassRequest
+	8,  // 12: students.StudentsService.GetParallel:input_type -> students.GetParallelRequest
+	10, // 13: students.StudentsService.GetStudentStats:input_type -> students.GetStudentStatsRequest
+	12, // 14: students.StudentsService.UpdateFullNameOfStudent:input_type -> students.UpdateFullNameOfStudentRequest
+	14, // 15: students.StudentsService.UpdateGradeOfStudent:input_type -> students.UpdateGradeOfStudentRequest
+	16, // 16: students.StudentsService.UpdateLetterOfStudent:input_type -> students.UpdateLetterOfStudentRequest
+	18, // 17: students.StudentsService.DeleteStudentByID:input_type -> students.DeleteStudentByIDRequest
 	1,  // 18: students.StudentsService.CreateStudent:output_type -> students.CreateStudentResponse
-	3,  // 19: students.StudentsService.DeleteStudentByID:output_type -> students.DeleteStudentByIDResponse
-	5,  // 20: students.StudentsService.UpdateFullNameOfStudent:output_type -> students.UpdateFullNameOfStudentResponse
-	7,  // 21: students.StudentsService.UpdateGradeOfStudent:output_type -> students.UpdateGradeOfStudentResponse
-	9,  // 22: students.StudentsService.UpdateLetterOfStudent:output_type -> students.UpdateLetterOfStudentResponse
-	11, // 23: students.StudentsService.GetStudentByID:output_type -> students.GetStudentByIDResponse
-	13, // 24: students.StudentsService.GetStudentByFullName:output_type -> students.GetStudentByFullNameResponse
-	15, // 25: students.StudentsService.GetGrade:output_type -> students.GetGradeResponse
-	17, // 26: students.StudentsService.GetParallel:output_type -> students.GetParallelResponse
-	19, // 27: students.StudentsService.GetStudentStats:output_type -> students.GetStudentStatsResponse
+	3,  // 19: students.StudentsService.GetStudentByID:output_type -> students.GetStudentByIDResponse
+	5,  // 20: students.StudentsService.GetStudentByFullName:output_type -> students.GetStudentByFullNameResponse
+	7,  // 21: students.StudentsService.GetClass:output_type -> students.GetClassResponse
+	9,  // 22: students.StudentsService.GetParallel:output_type -> students.GetParallelResponse
+	11, // 23: students.StudentsService.GetStudentStats:output_type -> students.GetStudentStatsResponse
+	13, // 24: students.StudentsService.UpdateFullNameOfStudent:output_type -> students.UpdateFullNameOfStudentResponse
+	15, // 25: students.StudentsService.UpdateGradeOfStudent:output_type -> students.UpdateGradeOfStudentResponse
+	17, // 26: students.StudentsService.UpdateLetterOfStudent:output_type -> students.UpdateLetterOfStudentResponse
+	19, // 27: students.StudentsService.DeleteStudentByID:output_type -> students.DeleteStudentByIDResponse
 	18, // [18:28] is the sub-list for method output_type
 	8,  // [8:18] is the sub-list for method input_type
 	8,  // [8:8] is the sub-list for extension type_name

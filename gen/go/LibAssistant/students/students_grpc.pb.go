@@ -20,15 +20,15 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	StudentsService_CreateStudent_FullMethodName           = "/students.StudentsService/CreateStudent"
-	StudentsService_DeleteStudentByID_FullMethodName       = "/students.StudentsService/DeleteStudentByID"
+	StudentsService_GetStudentByID_FullMethodName          = "/students.StudentsService/GetStudentByID"
+	StudentsService_GetStudentByFullName_FullMethodName    = "/students.StudentsService/GetStudentByFullName"
+	StudentsService_GetClass_FullMethodName                = "/students.StudentsService/GetClass"
+	StudentsService_GetParallel_FullMethodName             = "/students.StudentsService/GetParallel"
+	StudentsService_GetStudentStats_FullMethodName         = "/students.StudentsService/GetStudentStats"
 	StudentsService_UpdateFullNameOfStudent_FullMethodName = "/students.StudentsService/UpdateFullNameOfStudent"
 	StudentsService_UpdateGradeOfStudent_FullMethodName    = "/students.StudentsService/UpdateGradeOfStudent"
 	StudentsService_UpdateLetterOfStudent_FullMethodName   = "/students.StudentsService/UpdateLetterOfStudent"
-	StudentsService_GetStudentByID_FullMethodName          = "/students.StudentsService/GetStudentByID"
-	StudentsService_GetStudentByFullName_FullMethodName    = "/students.StudentsService/GetStudentByFullName"
-	StudentsService_GetGrade_FullMethodName                = "/students.StudentsService/GetGrade"
-	StudentsService_GetParallel_FullMethodName             = "/students.StudentsService/GetParallel"
-	StudentsService_GetStudentStats_FullMethodName         = "/students.StudentsService/GetStudentStats"
+	StudentsService_DeleteStudentByID_FullMethodName       = "/students.StudentsService/DeleteStudentByID"
 )
 
 // StudentsServiceClient is the client API for StudentsService service.
@@ -36,15 +36,15 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type StudentsServiceClient interface {
 	CreateStudent(ctx context.Context, in *CreateStudentRequest, opts ...grpc.CallOption) (*CreateStudentResponse, error)
-	DeleteStudentByID(ctx context.Context, in *DeleteStudentByIDRequest, opts ...grpc.CallOption) (*DeleteStudentByIDResponse, error)
+	GetStudentByID(ctx context.Context, in *GetStudentByIDRequest, opts ...grpc.CallOption) (*GetStudentByIDResponse, error)
+	GetStudentByFullName(ctx context.Context, in *GetStudentByFullNameRequest, opts ...grpc.CallOption) (*GetStudentByFullNameResponse, error)
+	GetClass(ctx context.Context, in *GetClassRequest, opts ...grpc.CallOption) (*GetClassResponse, error)
+	GetParallel(ctx context.Context, in *GetParallelRequest, opts ...grpc.CallOption) (*GetParallelResponse, error)
+	GetStudentStats(ctx context.Context, in *GetStudentStatsRequest, opts ...grpc.CallOption) (*GetStudentStatsResponse, error)
 	UpdateFullNameOfStudent(ctx context.Context, in *UpdateFullNameOfStudentRequest, opts ...grpc.CallOption) (*UpdateFullNameOfStudentResponse, error)
 	UpdateGradeOfStudent(ctx context.Context, in *UpdateGradeOfStudentRequest, opts ...grpc.CallOption) (*UpdateGradeOfStudentResponse, error)
 	UpdateLetterOfStudent(ctx context.Context, in *UpdateLetterOfStudentRequest, opts ...grpc.CallOption) (*UpdateLetterOfStudentResponse, error)
-	GetStudentByID(ctx context.Context, in *GetStudentByIDRequest, opts ...grpc.CallOption) (*GetStudentByIDResponse, error)
-	GetStudentByFullName(ctx context.Context, in *GetStudentByFullNameRequest, opts ...grpc.CallOption) (*GetStudentByFullNameResponse, error)
-	GetGrade(ctx context.Context, in *GetGradeRequest, opts ...grpc.CallOption) (*GetGradeResponse, error)
-	GetParallel(ctx context.Context, in *GetParallelRequest, opts ...grpc.CallOption) (*GetParallelResponse, error)
-	GetStudentStats(ctx context.Context, in *GetStudentStatsRequest, opts ...grpc.CallOption) (*GetStudentStatsResponse, error)
+	DeleteStudentByID(ctx context.Context, in *DeleteStudentByIDRequest, opts ...grpc.CallOption) (*DeleteStudentByIDResponse, error)
 }
 
 type studentsServiceClient struct {
@@ -65,10 +65,50 @@ func (c *studentsServiceClient) CreateStudent(ctx context.Context, in *CreateStu
 	return out, nil
 }
 
-func (c *studentsServiceClient) DeleteStudentByID(ctx context.Context, in *DeleteStudentByIDRequest, opts ...grpc.CallOption) (*DeleteStudentByIDResponse, error) {
+func (c *studentsServiceClient) GetStudentByID(ctx context.Context, in *GetStudentByIDRequest, opts ...grpc.CallOption) (*GetStudentByIDResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DeleteStudentByIDResponse)
-	err := c.cc.Invoke(ctx, StudentsService_DeleteStudentByID_FullMethodName, in, out, cOpts...)
+	out := new(GetStudentByIDResponse)
+	err := c.cc.Invoke(ctx, StudentsService_GetStudentByID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *studentsServiceClient) GetStudentByFullName(ctx context.Context, in *GetStudentByFullNameRequest, opts ...grpc.CallOption) (*GetStudentByFullNameResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetStudentByFullNameResponse)
+	err := c.cc.Invoke(ctx, StudentsService_GetStudentByFullName_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *studentsServiceClient) GetClass(ctx context.Context, in *GetClassRequest, opts ...grpc.CallOption) (*GetClassResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetClassResponse)
+	err := c.cc.Invoke(ctx, StudentsService_GetClass_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *studentsServiceClient) GetParallel(ctx context.Context, in *GetParallelRequest, opts ...grpc.CallOption) (*GetParallelResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetParallelResponse)
+	err := c.cc.Invoke(ctx, StudentsService_GetParallel_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *studentsServiceClient) GetStudentStats(ctx context.Context, in *GetStudentStatsRequest, opts ...grpc.CallOption) (*GetStudentStatsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetStudentStatsResponse)
+	err := c.cc.Invoke(ctx, StudentsService_GetStudentStats_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -105,50 +145,10 @@ func (c *studentsServiceClient) UpdateLetterOfStudent(ctx context.Context, in *U
 	return out, nil
 }
 
-func (c *studentsServiceClient) GetStudentByID(ctx context.Context, in *GetStudentByIDRequest, opts ...grpc.CallOption) (*GetStudentByIDResponse, error) {
+func (c *studentsServiceClient) DeleteStudentByID(ctx context.Context, in *DeleteStudentByIDRequest, opts ...grpc.CallOption) (*DeleteStudentByIDResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetStudentByIDResponse)
-	err := c.cc.Invoke(ctx, StudentsService_GetStudentByID_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *studentsServiceClient) GetStudentByFullName(ctx context.Context, in *GetStudentByFullNameRequest, opts ...grpc.CallOption) (*GetStudentByFullNameResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetStudentByFullNameResponse)
-	err := c.cc.Invoke(ctx, StudentsService_GetStudentByFullName_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *studentsServiceClient) GetGrade(ctx context.Context, in *GetGradeRequest, opts ...grpc.CallOption) (*GetGradeResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetGradeResponse)
-	err := c.cc.Invoke(ctx, StudentsService_GetGrade_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *studentsServiceClient) GetParallel(ctx context.Context, in *GetParallelRequest, opts ...grpc.CallOption) (*GetParallelResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetParallelResponse)
-	err := c.cc.Invoke(ctx, StudentsService_GetParallel_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *studentsServiceClient) GetStudentStats(ctx context.Context, in *GetStudentStatsRequest, opts ...grpc.CallOption) (*GetStudentStatsResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetStudentStatsResponse)
-	err := c.cc.Invoke(ctx, StudentsService_GetStudentStats_FullMethodName, in, out, cOpts...)
+	out := new(DeleteStudentByIDResponse)
+	err := c.cc.Invoke(ctx, StudentsService_DeleteStudentByID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -160,15 +160,15 @@ func (c *studentsServiceClient) GetStudentStats(ctx context.Context, in *GetStud
 // for forward compatibility.
 type StudentsServiceServer interface {
 	CreateStudent(context.Context, *CreateStudentRequest) (*CreateStudentResponse, error)
-	DeleteStudentByID(context.Context, *DeleteStudentByIDRequest) (*DeleteStudentByIDResponse, error)
+	GetStudentByID(context.Context, *GetStudentByIDRequest) (*GetStudentByIDResponse, error)
+	GetStudentByFullName(context.Context, *GetStudentByFullNameRequest) (*GetStudentByFullNameResponse, error)
+	GetClass(context.Context, *GetClassRequest) (*GetClassResponse, error)
+	GetParallel(context.Context, *GetParallelRequest) (*GetParallelResponse, error)
+	GetStudentStats(context.Context, *GetStudentStatsRequest) (*GetStudentStatsResponse, error)
 	UpdateFullNameOfStudent(context.Context, *UpdateFullNameOfStudentRequest) (*UpdateFullNameOfStudentResponse, error)
 	UpdateGradeOfStudent(context.Context, *UpdateGradeOfStudentRequest) (*UpdateGradeOfStudentResponse, error)
 	UpdateLetterOfStudent(context.Context, *UpdateLetterOfStudentRequest) (*UpdateLetterOfStudentResponse, error)
-	GetStudentByID(context.Context, *GetStudentByIDRequest) (*GetStudentByIDResponse, error)
-	GetStudentByFullName(context.Context, *GetStudentByFullNameRequest) (*GetStudentByFullNameResponse, error)
-	GetGrade(context.Context, *GetGradeRequest) (*GetGradeResponse, error)
-	GetParallel(context.Context, *GetParallelRequest) (*GetParallelResponse, error)
-	GetStudentStats(context.Context, *GetStudentStatsRequest) (*GetStudentStatsResponse, error)
+	DeleteStudentByID(context.Context, *DeleteStudentByIDRequest) (*DeleteStudentByIDResponse, error)
 	mustEmbedUnimplementedStudentsServiceServer()
 }
 
@@ -182,8 +182,20 @@ type UnimplementedStudentsServiceServer struct{}
 func (UnimplementedStudentsServiceServer) CreateStudent(context.Context, *CreateStudentRequest) (*CreateStudentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateStudent not implemented")
 }
-func (UnimplementedStudentsServiceServer) DeleteStudentByID(context.Context, *DeleteStudentByIDRequest) (*DeleteStudentByIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteStudentByID not implemented")
+func (UnimplementedStudentsServiceServer) GetStudentByID(context.Context, *GetStudentByIDRequest) (*GetStudentByIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStudentByID not implemented")
+}
+func (UnimplementedStudentsServiceServer) GetStudentByFullName(context.Context, *GetStudentByFullNameRequest) (*GetStudentByFullNameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStudentByFullName not implemented")
+}
+func (UnimplementedStudentsServiceServer) GetClass(context.Context, *GetClassRequest) (*GetClassResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetClass not implemented")
+}
+func (UnimplementedStudentsServiceServer) GetParallel(context.Context, *GetParallelRequest) (*GetParallelResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetParallel not implemented")
+}
+func (UnimplementedStudentsServiceServer) GetStudentStats(context.Context, *GetStudentStatsRequest) (*GetStudentStatsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetStudentStats not implemented")
 }
 func (UnimplementedStudentsServiceServer) UpdateFullNameOfStudent(context.Context, *UpdateFullNameOfStudentRequest) (*UpdateFullNameOfStudentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateFullNameOfStudent not implemented")
@@ -194,20 +206,8 @@ func (UnimplementedStudentsServiceServer) UpdateGradeOfStudent(context.Context, 
 func (UnimplementedStudentsServiceServer) UpdateLetterOfStudent(context.Context, *UpdateLetterOfStudentRequest) (*UpdateLetterOfStudentResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateLetterOfStudent not implemented")
 }
-func (UnimplementedStudentsServiceServer) GetStudentByID(context.Context, *GetStudentByIDRequest) (*GetStudentByIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStudentByID not implemented")
-}
-func (UnimplementedStudentsServiceServer) GetStudentByFullName(context.Context, *GetStudentByFullNameRequest) (*GetStudentByFullNameResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStudentByFullName not implemented")
-}
-func (UnimplementedStudentsServiceServer) GetGrade(context.Context, *GetGradeRequest) (*GetGradeResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetGrade not implemented")
-}
-func (UnimplementedStudentsServiceServer) GetParallel(context.Context, *GetParallelRequest) (*GetParallelResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetParallel not implemented")
-}
-func (UnimplementedStudentsServiceServer) GetStudentStats(context.Context, *GetStudentStatsRequest) (*GetStudentStatsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetStudentStats not implemented")
+func (UnimplementedStudentsServiceServer) DeleteStudentByID(context.Context, *DeleteStudentByIDRequest) (*DeleteStudentByIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteStudentByID not implemented")
 }
 func (UnimplementedStudentsServiceServer) mustEmbedUnimplementedStudentsServiceServer() {}
 func (UnimplementedStudentsServiceServer) testEmbeddedByValue()                         {}
@@ -248,20 +248,92 @@ func _StudentsService_CreateStudent_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StudentsService_DeleteStudentByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteStudentByIDRequest)
+func _StudentsService_GetStudentByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStudentByIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StudentsServiceServer).DeleteStudentByID(ctx, in)
+		return srv.(StudentsServiceServer).GetStudentByID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StudentsService_DeleteStudentByID_FullMethodName,
+		FullMethod: StudentsService_GetStudentByID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StudentsServiceServer).DeleteStudentByID(ctx, req.(*DeleteStudentByIDRequest))
+		return srv.(StudentsServiceServer).GetStudentByID(ctx, req.(*GetStudentByIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StudentsService_GetStudentByFullName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStudentByFullNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StudentsServiceServer).GetStudentByFullName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StudentsService_GetStudentByFullName_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StudentsServiceServer).GetStudentByFullName(ctx, req.(*GetStudentByFullNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StudentsService_GetClass_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetClassRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StudentsServiceServer).GetClass(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StudentsService_GetClass_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StudentsServiceServer).GetClass(ctx, req.(*GetClassRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StudentsService_GetParallel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetParallelRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StudentsServiceServer).GetParallel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StudentsService_GetParallel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StudentsServiceServer).GetParallel(ctx, req.(*GetParallelRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _StudentsService_GetStudentStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetStudentStatsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(StudentsServiceServer).GetStudentStats(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: StudentsService_GetStudentStats_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(StudentsServiceServer).GetStudentStats(ctx, req.(*GetStudentStatsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -320,92 +392,20 @@ func _StudentsService_UpdateLetterOfStudent_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _StudentsService_GetStudentByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStudentByIDRequest)
+func _StudentsService_DeleteStudentByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteStudentByIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(StudentsServiceServer).GetStudentByID(ctx, in)
+		return srv.(StudentsServiceServer).DeleteStudentByID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: StudentsService_GetStudentByID_FullMethodName,
+		FullMethod: StudentsService_DeleteStudentByID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StudentsServiceServer).GetStudentByID(ctx, req.(*GetStudentByIDRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StudentsService_GetStudentByFullName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStudentByFullNameRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StudentsServiceServer).GetStudentByFullName(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StudentsService_GetStudentByFullName_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StudentsServiceServer).GetStudentByFullName(ctx, req.(*GetStudentByFullNameRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StudentsService_GetGrade_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetGradeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StudentsServiceServer).GetGrade(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StudentsService_GetGrade_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StudentsServiceServer).GetGrade(ctx, req.(*GetGradeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StudentsService_GetParallel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetParallelRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StudentsServiceServer).GetParallel(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StudentsService_GetParallel_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StudentsServiceServer).GetParallel(ctx, req.(*GetParallelRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _StudentsService_GetStudentStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetStudentStatsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(StudentsServiceServer).GetStudentStats(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: StudentsService_GetStudentStats_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(StudentsServiceServer).GetStudentStats(ctx, req.(*GetStudentStatsRequest))
+		return srv.(StudentsServiceServer).DeleteStudentByID(ctx, req.(*DeleteStudentByIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -422,8 +422,24 @@ var StudentsService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _StudentsService_CreateStudent_Handler,
 		},
 		{
-			MethodName: "DeleteStudentByID",
-			Handler:    _StudentsService_DeleteStudentByID_Handler,
+			MethodName: "GetStudentByID",
+			Handler:    _StudentsService_GetStudentByID_Handler,
+		},
+		{
+			MethodName: "GetStudentByFullName",
+			Handler:    _StudentsService_GetStudentByFullName_Handler,
+		},
+		{
+			MethodName: "GetClass",
+			Handler:    _StudentsService_GetClass_Handler,
+		},
+		{
+			MethodName: "GetParallel",
+			Handler:    _StudentsService_GetParallel_Handler,
+		},
+		{
+			MethodName: "GetStudentStats",
+			Handler:    _StudentsService_GetStudentStats_Handler,
 		},
 		{
 			MethodName: "UpdateFullNameOfStudent",
@@ -438,24 +454,8 @@ var StudentsService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _StudentsService_UpdateLetterOfStudent_Handler,
 		},
 		{
-			MethodName: "GetStudentByID",
-			Handler:    _StudentsService_GetStudentByID_Handler,
-		},
-		{
-			MethodName: "GetStudentByFullName",
-			Handler:    _StudentsService_GetStudentByFullName_Handler,
-		},
-		{
-			MethodName: "GetGrade",
-			Handler:    _StudentsService_GetGrade_Handler,
-		},
-		{
-			MethodName: "GetParallel",
-			Handler:    _StudentsService_GetParallel_Handler,
-		},
-		{
-			MethodName: "GetStudentStats",
-			Handler:    _StudentsService_GetStudentStats_Handler,
+			MethodName: "DeleteStudentByID",
+			Handler:    _StudentsService_DeleteStudentByID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

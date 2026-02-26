@@ -40,7 +40,7 @@ message RegisterAsAdminResponse {
 }
 
 message IsAdminRequest {
-    int64 user_id = 1;
+    string user_id = 1;
 }
 
 message IsAdminResponse {

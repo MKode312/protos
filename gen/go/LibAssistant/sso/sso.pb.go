@@ -319,7 +319,7 @@ func (x *RegisterAsAdminResponse) GetUserId() string {
 
 type IsAdminRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -354,11 +354,11 @@ func (*IsAdminRequest) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_sso_sso_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *IsAdminRequest) GetUserId() int64 {
+func (x *IsAdminRequest) GetUserId() string {
 	if x != nil {
 		return x.UserId
 	}
-	return 0
+	return ""
 }
 
 type IsAdminResponse struct {
@@ -427,7 +427,7 @@ const file_LibAssistant_sso_sso_proto_rawDesc = "" +
 	"\x17RegisterAsAdminResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\")\n" +
 	"\x0eIsAdminRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x03R\x06userId\",\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId\",\n" +
 	"\x0fIsAdminResponse\x12\x19\n" +
 	"\bis_admin\x18\x01 \x01(\bR\aisAdmin2\xfb\x01\n" +
 	"\x04Auth\x129\n" +

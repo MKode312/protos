@@ -31,13 +31,22 @@ const (
 // IssueServiceClient is the client API for IssueService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// Issue books, return them, report loss and viewing debtors
 type IssueServiceClient interface {
+	// Issue book by it's id and student's id for the fixed amount of days
 	IssueBook(ctx context.Context, in *IssueRequest, opts ...grpc.CallOption) (*IssueResponse, error)
+	// Check the availability of the book to be issued
 	CheckAvailability(ctx context.Context, in *CheckAvailabilityRequest, opts ...grpc.CallOption) (*CheckAvailabilityResponse, error)
+	// Return book after issuing it
 	ReturnBook(ctx context.Context, in *ReturnRequest, opts ...grpc.CallOption) (*ReturnResponse, error)
+	// Report loss of the book
 	ReportLost(ctx context.Context, in *ReportLostRequest, opts ...grpc.CallOption) (*ReportLostResponse, error)
+	// Get all the saved debts
 	GetAllDebts(ctx context.Context, in *GetAllDebtsRequest, opts ...grpc.CallOption) (*GetAllDebtsResponse, error)
+	// View all the saved debtors
 	ViewDebtors(ctx context.Context, in *ViewDebtorsRequest, opts ...grpc.CallOption) (*ViewDebtorsResponse, error)
+	// Take a book from the storage of books service
 	AddBook(ctx context.Context, in *AddBookRequest, opts ...grpc.CallOption) (*AddBookResponse, error)
 }
 
@@ -122,13 +131,22 @@ func (c *issueServiceClient) AddBook(ctx context.Context, in *AddBookRequest, op
 // IssueServiceServer is the server API for IssueService service.
 // All implementations must embed UnimplementedIssueServiceServer
 // for forward compatibility.
+//
+// Issue books, return them, report loss and viewing debtors
 type IssueServiceServer interface {
+	// Issue book by it's id and student's id for the fixed amount of days
 	IssueBook(context.Context, *IssueRequest) (*IssueResponse, error)
+	// Check the availability of the book to be issued
 	CheckAvailability(context.Context, *CheckAvailabilityRequest) (*CheckAvailabilityResponse, error)
+	// Return book after issuing it
 	ReturnBook(context.Context, *ReturnRequest) (*ReturnResponse, error)
+	// Report loss of the book
 	ReportLost(context.Context, *ReportLostRequest) (*ReportLostResponse, error)
+	// Get all the saved debts
 	GetAllDebts(context.Context, *GetAllDebtsRequest) (*GetAllDebtsResponse, error)
+	// View all the saved debtors
 	ViewDebtors(context.Context, *ViewDebtorsRequest) (*ViewDebtorsResponse, error)
+	// Take a book from the storage of books service
 	AddBook(context.Context, *AddBookRequest) (*AddBookResponse, error)
 	mustEmbedUnimplementedIssueServiceServer()
 }

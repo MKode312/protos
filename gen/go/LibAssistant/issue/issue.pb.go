@@ -24,9 +24,9 @@ const (
 
 type IssueRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	BookId        int64                  `protobuf:"varint,1,opt,name=book_id,json=bookId,proto3" json:"book_id,omitempty"`
-	StudentId     int64                  `protobuf:"varint,2,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
-	DaysDue       int32                  `protobuf:"varint,3,opt,name=days_due,json=daysDue,proto3" json:"days_due,omitempty"`
+	BookId        string                 `protobuf:"bytes,1,opt,name=book_id,json=bookId,proto3" json:"book_id,omitempty"`
+	StudentId     string                 `protobuf:"bytes,2,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	DaysDue       int32                  `protobuf:"varint,3,opt,name=days_due,json=daysDue,proto3" json:"days_due,omitempty"` // optional, default 14
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,18 +61,18 @@ func (*IssueRequest) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_issue_issue_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *IssueRequest) GetBookId() int64 {
+func (x *IssueRequest) GetBookId() string {
 	if x != nil {
 		return x.BookId
 	}
-	return 0
+	return ""
 }
 
-func (x *IssueRequest) GetStudentId() int64 {
+func (x *IssueRequest) GetStudentId() string {
 	if x != nil {
 		return x.StudentId
 	}
-	return 0
+	return ""
 }
 
 func (x *IssueRequest) GetDaysDue() int32 {
@@ -84,9 +84,7 @@ func (x *IssueRequest) GetDaysDue() int32 {
 
 type IssueResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	IssueId       int64                  `protobuf:"varint,3,opt,name=issue_id,json=issueId,proto3" json:"issue_id,omitempty"`
+	IssueId       string                 `protobuf:"bytes,1,opt,name=issue_id,json=issueId,proto3" json:"issue_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -121,30 +119,16 @@ func (*IssueResponse) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_issue_issue_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *IssueResponse) GetSuccess() bool {
+func (x *IssueResponse) GetIssueId() string {
 	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *IssueResponse) GetMessage() string {
-	if x != nil {
-		return x.Message
+		return x.IssueId
 	}
 	return ""
 }
 
-func (x *IssueResponse) GetIssueId() int64 {
-	if x != nil {
-		return x.IssueId
-	}
-	return 0
-}
-
 type CheckAvailabilityRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	BookId        int64                  `protobuf:"varint,1,opt,name=book_id,json=bookId,proto3" json:"book_id,omitempty"`
+	BookId        string                 `protobuf:"bytes,1,opt,name=book_id,json=bookId,proto3" json:"book_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -179,11 +163,11 @@ func (*CheckAvailabilityRequest) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_issue_issue_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *CheckAvailabilityRequest) GetBookId() int64 {
+func (x *CheckAvailabilityRequest) GetBookId() string {
 	if x != nil {
 		return x.BookId
 	}
-	return 0
+	return ""
 }
 
 type CheckAvailabilityResponse struct {
@@ -240,7 +224,7 @@ func (x *CheckAvailabilityResponse) GetTotalCopies() int32 {
 
 type ReturnRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IssueId       int64                  `protobuf:"varint,1,opt,name=issue_id,json=issueId,proto3" json:"issue_id,omitempty"`
+	IssueId       string                 `protobuf:"bytes,1,opt,name=issue_id,json=issueId,proto3" json:"issue_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -275,18 +259,16 @@ func (*ReturnRequest) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_issue_issue_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *ReturnRequest) GetIssueId() int64 {
+func (x *ReturnRequest) GetIssueId() string {
 	if x != nil {
 		return x.IssueId
 	}
-	return 0
+	return ""
 }
 
 type ReturnResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	Fine          int32                  `protobuf:"varint,3,opt,name=fine,proto3" json:"fine,omitempty"`
+	Fine          int32                  `protobuf:"varint,1,opt,name=fine,proto3" json:"fine,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -321,20 +303,6 @@ func (*ReturnResponse) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_issue_issue_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ReturnResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *ReturnResponse) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
 func (x *ReturnResponse) GetFine() int32 {
 	if x != nil {
 		return x.Fine
@@ -344,7 +312,7 @@ func (x *ReturnResponse) GetFine() int32 {
 
 type ReportLostRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IssueId       int64                  `protobuf:"varint,1,opt,name=issue_id,json=issueId,proto3" json:"issue_id,omitempty"`
+	IssueId       string                 `protobuf:"bytes,1,opt,name=issue_id,json=issueId,proto3" json:"issue_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -379,18 +347,16 @@ func (*ReportLostRequest) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_issue_issue_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *ReportLostRequest) GetIssueId() int64 {
+func (x *ReportLostRequest) GetIssueId() string {
 	if x != nil {
 		return x.IssueId
 	}
-	return 0
+	return ""
 }
 
 type ReportLostResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	Fine          int32                  `protobuf:"varint,3,opt,name=fine,proto3" json:"fine,omitempty"`
+	Fine          int32                  `protobuf:"varint,1,opt,name=fine,proto3" json:"fine,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -423,20 +389,6 @@ func (x *ReportLostResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use ReportLostResponse.ProtoReflect.Descriptor instead.
 func (*ReportLostResponse) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_issue_issue_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *ReportLostResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *ReportLostResponse) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
 }
 
 func (x *ReportLostResponse) GetFine() int32 {
@@ -528,7 +480,7 @@ func (x *GetAllDebtsResponse) GetDebts() []*Debt {
 
 type ViewDebtorsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"`
+	Limit         int32                  `protobuf:"varint,1,opt,name=limit,proto3" json:"limit,omitempty"` // optional
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -624,10 +576,10 @@ func (x *ViewDebtorsResponse) GetFromCache() bool {
 
 type Debt struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	IssueId       int64                  `protobuf:"varint,1,opt,name=issue_id,json=issueId,proto3" json:"issue_id,omitempty"`
-	StudentId     int64                  `protobuf:"varint,2,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
+	IssueId       string                 `protobuf:"bytes,1,opt,name=issue_id,json=issueId,proto3" json:"issue_id,omitempty"`
+	StudentId     string                 `protobuf:"bytes,2,opt,name=student_id,json=studentId,proto3" json:"student_id,omitempty"`
 	StudentName   string                 `protobuf:"bytes,3,opt,name=student_name,json=studentName,proto3" json:"student_name,omitempty"`
-	BookId        int64                  `protobuf:"varint,4,opt,name=book_id,json=bookId,proto3" json:"book_id,omitempty"`
+	BookId        string                 `protobuf:"bytes,4,opt,name=book_id,json=bookId,proto3" json:"book_id,omitempty"`
 	BookTitle     string                 `protobuf:"bytes,5,opt,name=book_title,json=bookTitle,proto3" json:"book_title,omitempty"`
 	DueDate       *timestamppb.Timestamp `protobuf:"bytes,6,opt,name=due_date,json=dueDate,proto3" json:"due_date,omitempty"`
 	OverdueDays   int32                  `protobuf:"varint,7,opt,name=overdue_days,json=overdueDays,proto3" json:"overdue_days,omitempty"`
@@ -666,18 +618,18 @@ func (*Debt) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_issue_issue_proto_rawDescGZIP(), []int{12}
 }
 
-func (x *Debt) GetIssueId() int64 {
+func (x *Debt) GetIssueId() string {
 	if x != nil {
 		return x.IssueId
 	}
-	return 0
+	return ""
 }
 
-func (x *Debt) GetStudentId() int64 {
+func (x *Debt) GetStudentId() string {
 	if x != nil {
 		return x.StudentId
 	}
-	return 0
+	return ""
 }
 
 func (x *Debt) GetStudentName() string {
@@ -687,11 +639,11 @@ func (x *Debt) GetStudentName() string {
 	return ""
 }
 
-func (x *Debt) GetBookId() int64 {
+func (x *Debt) GetBookId() string {
 	if x != nil {
 		return x.BookId
 	}
-	return 0
+	return ""
 }
 
 func (x *Debt) GetBookTitle() string {
@@ -776,9 +728,7 @@ func (x *AddBookRequest) GetTotalCopies() int32 {
 
 type AddBookResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	BookId        int64                  `protobuf:"varint,3,opt,name=book_id,json=bookId,proto3" json:"book_id,omitempty"`
+	BookId        string                 `protobuf:"bytes,1,opt,name=book_id,json=bookId,proto3" json:"book_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -813,25 +763,11 @@ func (*AddBookResponse) Descriptor() ([]byte, []int) {
 	return file_LibAssistant_issue_issue_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *AddBookResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
-}
-
-func (x *AddBookResponse) GetMessage() string {
-	if x != nil {
-		return x.Message
-	}
-	return ""
-}
-
-func (x *AddBookResponse) GetBookId() int64 {
+func (x *AddBookResponse) GetBookId() string {
 	if x != nil {
 		return x.BookId
 	}
-	return 0
+	return ""
 }
 
 var File_LibAssistant_issue_issue_proto protoreflect.FileDescriptor
@@ -840,31 +776,25 @@ const file_LibAssistant_issue_issue_proto_rawDesc = "" +
 	"\n" +
 	"\x1eLibAssistant/issue/issue.proto\x12\x05issue\x1a\x1fgoogle/protobuf/timestamp.proto\"a\n" +
 	"\fIssueRequest\x12\x17\n" +
-	"\abook_id\x18\x01 \x01(\x03R\x06bookId\x12\x1d\n" +
+	"\abook_id\x18\x01 \x01(\tR\x06bookId\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\x03R\tstudentId\x12\x19\n" +
-	"\bdays_due\x18\x03 \x01(\x05R\adaysDue\"^\n" +
-	"\rIssueResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x12\x19\n" +
-	"\bissue_id\x18\x03 \x01(\x03R\aissueId\"3\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\x12\x19\n" +
+	"\bdays_due\x18\x03 \x01(\x05R\adaysDue\"*\n" +
+	"\rIssueResponse\x12\x19\n" +
+	"\bissue_id\x18\x01 \x01(\tR\aissueId\"3\n" +
 	"\x18CheckAvailabilityRequest\x12\x17\n" +
-	"\abook_id\x18\x01 \x01(\x03R\x06bookId\"i\n" +
+	"\abook_id\x18\x01 \x01(\tR\x06bookId\"i\n" +
 	"\x19CheckAvailabilityResponse\x12)\n" +
 	"\x10available_copies\x18\x01 \x01(\x05R\x0favailableCopies\x12!\n" +
 	"\ftotal_copies\x18\x02 \x01(\x05R\vtotalCopies\"*\n" +
 	"\rReturnRequest\x12\x19\n" +
-	"\bissue_id\x18\x01 \x01(\x03R\aissueId\"X\n" +
-	"\x0eReturnResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x12\x12\n" +
-	"\x04fine\x18\x03 \x01(\x05R\x04fine\".\n" +
+	"\bissue_id\x18\x01 \x01(\tR\aissueId\"$\n" +
+	"\x0eReturnResponse\x12\x12\n" +
+	"\x04fine\x18\x01 \x01(\x05R\x04fine\".\n" +
 	"\x11ReportLostRequest\x12\x19\n" +
-	"\bissue_id\x18\x01 \x01(\x03R\aissueId\"\\\n" +
-	"\x12ReportLostResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x12\x12\n" +
-	"\x04fine\x18\x03 \x01(\x05R\x04fine\"\x14\n" +
+	"\bissue_id\x18\x01 \x01(\tR\aissueId\"(\n" +
+	"\x12ReportLostResponse\x12\x12\n" +
+	"\x04fine\x18\x01 \x01(\x05R\x04fine\"\x14\n" +
 	"\x12GetAllDebtsRequest\"8\n" +
 	"\x13GetAllDebtsResponse\x12!\n" +
 	"\x05debts\x18\x01 \x03(\v2\v.issue.DebtR\x05debts\"*\n" +
@@ -875,11 +805,11 @@ const file_LibAssistant_issue_issue_proto_rawDesc = "" +
 	"\n" +
 	"from_cache\x18\x02 \x01(\bR\tfromCache\"\x89\x02\n" +
 	"\x04Debt\x12\x19\n" +
-	"\bissue_id\x18\x01 \x01(\x03R\aissueId\x12\x1d\n" +
+	"\bissue_id\x18\x01 \x01(\tR\aissueId\x12\x1d\n" +
 	"\n" +
-	"student_id\x18\x02 \x01(\x03R\tstudentId\x12!\n" +
+	"student_id\x18\x02 \x01(\tR\tstudentId\x12!\n" +
 	"\fstudent_name\x18\x03 \x01(\tR\vstudentName\x12\x17\n" +
-	"\abook_id\x18\x04 \x01(\x03R\x06bookId\x12\x1d\n" +
+	"\abook_id\x18\x04 \x01(\tR\x06bookId\x12\x1d\n" +
 	"\n" +
 	"book_title\x18\x05 \x01(\tR\tbookTitle\x125\n" +
 	"\bdue_date\x18\x06 \x01(\v2\x1a.google.protobuf.TimestampR\adueDate\x12!\n" +
@@ -887,21 +817,19 @@ const file_LibAssistant_issue_issue_proto_rawDesc = "" +
 	"\x04fine\x18\b \x01(\x05R\x04fine\"I\n" +
 	"\x0eAddBookRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12!\n" +
-	"\ftotal_copies\x18\x02 \x01(\x05R\vtotalCopies\"^\n" +
-	"\x0fAddBookResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\x12\x18\n" +
-	"\amessage\x18\x02 \x01(\tR\amessage\x12\x17\n" +
-	"\abook_id\x18\x03 \x01(\x03R\x06bookId2\xe2\x03\n" +
-	"\fIssueService\x126\n" +
-	"\tIssueBook\x12\x13.issue.IssueRequest\x1a\x14.issue.IssueResponse\x12V\n" +
-	"\x11CheckAvailability\x12\x1f.issue.CheckAvailabilityRequest\x1a .issue.CheckAvailabilityResponse\x129\n" +
+	"\ftotal_copies\x18\x02 \x01(\x05R\vtotalCopies\"*\n" +
+	"\x0fAddBookResponse\x12\x17\n" +
+	"\abook_id\x18\x01 \x01(\tR\x06bookId2\xf0\x03\n" +
+	"\fIssueService\x128\n" +
+	"\tIssueBook\x12\x13.issue.IssueRequest\x1a\x14.issue.IssueResponse\"\x00\x12X\n" +
+	"\x11CheckAvailability\x12\x1f.issue.CheckAvailabilityRequest\x1a .issue.CheckAvailabilityResponse\"\x00\x12;\n" +
 	"\n" +
-	"ReturnBook\x12\x14.issue.ReturnRequest\x1a\x15.issue.ReturnResponse\x12A\n" +
+	"ReturnBook\x12\x14.issue.ReturnRequest\x1a\x15.issue.ReturnResponse\"\x00\x12C\n" +
 	"\n" +
-	"ReportLost\x12\x18.issue.ReportLostRequest\x1a\x19.issue.ReportLostResponse\x12D\n" +
-	"\vGetAllDebts\x12\x19.issue.GetAllDebtsRequest\x1a\x1a.issue.GetAllDebtsResponse\x12D\n" +
-	"\vViewDebtors\x12\x19.issue.ViewDebtorsRequest\x1a\x1a.issue.ViewDebtorsResponse\x128\n" +
-	"\aAddBook\x12\x15.issue.AddBookRequest\x1a\x16.issue.AddBookResponseB\x18Z\x16mkode.issue.v1;issuev1b\x06proto3"
+	"ReportLost\x12\x18.issue.ReportLostRequest\x1a\x19.issue.ReportLostResponse\"\x00\x12F\n" +
+	"\vGetAllDebts\x12\x19.issue.GetAllDebtsRequest\x1a\x1a.issue.GetAllDebtsResponse\"\x00\x12F\n" +
+	"\vViewDebtors\x12\x19.issue.ViewDebtorsRequest\x1a\x1a.issue.ViewDebtorsResponse\"\x00\x12:\n" +
+	"\aAddBook\x12\x15.issue.AddBookRequest\x1a\x16.issue.AddBookResponse\"\x00B\x18Z\x16mkode.issue.v1;issuev1b\x06proto3"
 
 var (
 	file_LibAssistant_issue_issue_proto_rawDescOnce sync.Once

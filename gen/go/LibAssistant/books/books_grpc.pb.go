@@ -19,27 +19,46 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	Books_AddBook_FullMethodName                = "/books.Books/AddBook"
-	Books_TakeBook_FullMethodName               = "/books.Books/TakeBook"
-	Books_GetBookByID_FullMethodName            = "/books.Books/GetBookByID"
-	Books_GetBookByTitle_FullMethodName         = "/books.Books/GetBookByTitle"
-	Books_DeleteBook_FullMethodName             = "/books.Books/DeleteBook"
-	Books_AddCopies_FullMethodName              = "/books.Books/AddCopies"
-	Books_GetListOfBooks_FullMethodName         = "/books.Books/GetListOfBooks"
-	Books_FilterBooksByGenreList_FullMethodName = "/books.Books/FilterBooksByGenreList"
+	Books_AddBook_FullMethodName                               = "/books.Books/AddBook"
+	Books_AddCourseBook_FullMethodName                         = "/books.Books/AddCourseBook"
+	Books_TakeBook_FullMethodName                              = "/books.Books/TakeBook"
+	Books_GetBookByID_FullMethodName                           = "/books.Books/GetBookByID"
+	Books_GetBookByTitle_FullMethodName                        = "/books.Books/GetBookByTitle"
+	Books_GetCourseBookByTitle_FullMethodName                  = "/books.Books/GetCourseBookByTitle"
+	Books_GetListOfCourseBooksBySubjectAndGrade_FullMethodName = "/books.Books/GetListOfCourseBooksBySubjectAndGrade"
+	Books_DeleteBook_FullMethodName                            = "/books.Books/DeleteBook"
+	Books_AddCopies_FullMethodName                             = "/books.Books/AddCopies"
+	Books_GetListOfBooks_FullMethodName                        = "/books.Books/GetListOfBooks"
+	Books_FilterBooksByGenreList_FullMethodName                = "/books.Books/FilterBooksByGenreList"
 )
 
 // BooksClient is the client API for Books service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// Storing books and getting them
 type BooksClient interface {
+	// Add book to storage
 	AddBook(ctx context.Context, in *AddBookRequest, opts ...grpc.CallOption) (*AddBookResponse, error)
+	// Add new course book to storage
+	AddCourseBook(ctx context.Context, in *AddCourseBookRequest, opts ...grpc.CallOption) (*AddCourseBookResponse, error)
+	// Take some copies of the book from the storage
 	TakeBook(ctx context.Context, in *TakeBookRequest, opts ...grpc.CallOption) (*TakeBookResponse, error)
+	// Get book by it's id (uuid)
 	GetBookByID(ctx context.Context, in *GetBookByIDRequest, opts ...grpc.CallOption) (*GetBookByIDResponse, error)
+	// Get book by it's title
 	GetBookByTitle(ctx context.Context, in *GetBookByTitleRequest, opts ...grpc.CallOption) (*GetBookByTitleResponse, error)
+	// Get course book by it's title, grade and author
+	GetCourseBookByTitle(ctx context.Context, in *GetCourseBookByTitleRequest, opts ...grpc.CallOption) (*GetCourseBookByTitleResponse, error)
+	// Get list of course books by subject and grade
+	GetListOfCourseBooksBySubjectAndGrade(ctx context.Context, in *GetListOfCourseBooksBySubjectAndGradeRequest, opts ...grpc.CallOption) (*GetListOfCourseBooksBySubjectAndGradeResponse, error)
+	// Delete book by it's id
 	DeleteBook(ctx context.Context, in *DeleteBookRequest, opts ...grpc.CallOption) (*DeleteBookResponse, error)
+	// Add some copies to the existing book
 	AddCopies(ctx context.Context, in *AddCopiesRequest, opts ...grpc.CallOption) (*AddCopiesResponse, error)
+	// Get list of all books in the store
 	GetListOfBooks(ctx context.Context, in *GetListOfBooksRequest, opts ...grpc.CallOption) (*GetListOfBooksResponse, error)
+	// Get filtered list of books from the storage
 	FilterBooksByGenreList(ctx context.Context, in *FilterBooksByGenreListRequest, opts ...grpc.CallOption) (*FilterBooksByGenreListResponse, error)
 }
 
@@ -55,6 +74,16 @@ func (c *booksClient) AddBook(ctx context.Context, in *AddBookRequest, opts ...g
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(AddBookResponse)
 	err := c.cc.Invoke(ctx, Books_AddBook_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *booksClient) AddCourseBook(ctx context.Context, in *AddCourseBookRequest, opts ...grpc.CallOption) (*AddCourseBookResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AddCourseBookResponse)
+	err := c.cc.Invoke(ctx, Books_AddCourseBook_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -85,6 +114,26 @@ func (c *booksClient) GetBookByTitle(ctx context.Context, in *GetBookByTitleRequ
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetBookByTitleResponse)
 	err := c.cc.Invoke(ctx, Books_GetBookByTitle_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *booksClient) GetCourseBookByTitle(ctx context.Context, in *GetCourseBookByTitleRequest, opts ...grpc.CallOption) (*GetCourseBookByTitleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCourseBookByTitleResponse)
+	err := c.cc.Invoke(ctx, Books_GetCourseBookByTitle_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *booksClient) GetListOfCourseBooksBySubjectAndGrade(ctx context.Context, in *GetListOfCourseBooksBySubjectAndGradeRequest, opts ...grpc.CallOption) (*GetListOfCourseBooksBySubjectAndGradeResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetListOfCourseBooksBySubjectAndGradeResponse)
+	err := c.cc.Invoke(ctx, Books_GetListOfCourseBooksBySubjectAndGrade_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -134,14 +183,30 @@ func (c *booksClient) FilterBooksByGenreList(ctx context.Context, in *FilterBook
 // BooksServer is the server API for Books service.
 // All implementations must embed UnimplementedBooksServer
 // for forward compatibility.
+//
+// Storing books and getting them
 type BooksServer interface {
+	// Add book to storage
 	AddBook(context.Context, *AddBookRequest) (*AddBookResponse, error)
+	// Add new course book to storage
+	AddCourseBook(context.Context, *AddCourseBookRequest) (*AddCourseBookResponse, error)
+	// Take some copies of the book from the storage
 	TakeBook(context.Context, *TakeBookRequest) (*TakeBookResponse, error)
+	// Get book by it's id (uuid)
 	GetBookByID(context.Context, *GetBookByIDRequest) (*GetBookByIDResponse, error)
+	// Get book by it's title
 	GetBookByTitle(context.Context, *GetBookByTitleRequest) (*GetBookByTitleResponse, error)
+	// Get course book by it's title, grade and author
+	GetCourseBookByTitle(context.Context, *GetCourseBookByTitleRequest) (*GetCourseBookByTitleResponse, error)
+	// Get list of course books by subject and grade
+	GetListOfCourseBooksBySubjectAndGrade(context.Context, *GetListOfCourseBooksBySubjectAndGradeRequest) (*GetListOfCourseBooksBySubjectAndGradeResponse, error)
+	// Delete book by it's id
 	DeleteBook(context.Context, *DeleteBookRequest) (*DeleteBookResponse, error)
+	// Add some copies to the existing book
 	AddCopies(context.Context, *AddCopiesRequest) (*AddCopiesResponse, error)
+	// Get list of all books in the store
 	GetListOfBooks(context.Context, *GetListOfBooksRequest) (*GetListOfBooksResponse, error)
+	// Get filtered list of books from the storage
 	FilterBooksByGenreList(context.Context, *FilterBooksByGenreListRequest) (*FilterBooksByGenreListResponse, error)
 	mustEmbedUnimplementedBooksServer()
 }
@@ -156,6 +221,9 @@ type UnimplementedBooksServer struct{}
 func (UnimplementedBooksServer) AddBook(context.Context, *AddBookRequest) (*AddBookResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddBook not implemented")
 }
+func (UnimplementedBooksServer) AddCourseBook(context.Context, *AddCourseBookRequest) (*AddCourseBookResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddCourseBook not implemented")
+}
 func (UnimplementedBooksServer) TakeBook(context.Context, *TakeBookRequest) (*TakeBookResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TakeBook not implemented")
 }
@@ -164,6 +232,12 @@ func (UnimplementedBooksServer) GetBookByID(context.Context, *GetBookByIDRequest
 }
 func (UnimplementedBooksServer) GetBookByTitle(context.Context, *GetBookByTitleRequest) (*GetBookByTitleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBookByTitle not implemented")
+}
+func (UnimplementedBooksServer) GetCourseBookByTitle(context.Context, *GetCourseBookByTitleRequest) (*GetCourseBookByTitleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCourseBookByTitle not implemented")
+}
+func (UnimplementedBooksServer) GetListOfCourseBooksBySubjectAndGrade(context.Context, *GetListOfCourseBooksBySubjectAndGradeRequest) (*GetListOfCourseBooksBySubjectAndGradeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetListOfCourseBooksBySubjectAndGrade not implemented")
 }
 func (UnimplementedBooksServer) DeleteBook(context.Context, *DeleteBookRequest) (*DeleteBookResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteBook not implemented")
@@ -212,6 +286,24 @@ func _Books_AddBook_Handler(srv interface{}, ctx context.Context, dec func(inter
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BooksServer).AddBook(ctx, req.(*AddBookRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Books_AddCourseBook_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddCourseBookRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BooksServer).AddCourseBook(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Books_AddCourseBook_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BooksServer).AddCourseBook(ctx, req.(*AddCourseBookRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -266,6 +358,42 @@ func _Books_GetBookByTitle_Handler(srv interface{}, ctx context.Context, dec fun
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(BooksServer).GetBookByTitle(ctx, req.(*GetBookByTitleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Books_GetCourseBookByTitle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCourseBookByTitleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BooksServer).GetCourseBookByTitle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Books_GetCourseBookByTitle_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BooksServer).GetCourseBookByTitle(ctx, req.(*GetCourseBookByTitleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Books_GetListOfCourseBooksBySubjectAndGrade_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetListOfCourseBooksBySubjectAndGradeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BooksServer).GetListOfCourseBooksBySubjectAndGrade(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Books_GetListOfCourseBooksBySubjectAndGrade_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BooksServer).GetListOfCourseBooksBySubjectAndGrade(ctx, req.(*GetListOfCourseBooksBySubjectAndGradeRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -354,6 +482,10 @@ var Books_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Books_AddBook_Handler,
 		},
 		{
+			MethodName: "AddCourseBook",
+			Handler:    _Books_AddCourseBook_Handler,
+		},
+		{
 			MethodName: "TakeBook",
 			Handler:    _Books_TakeBook_Handler,
 		},
@@ -364,6 +496,14 @@ var Books_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetBookByTitle",
 			Handler:    _Books_GetBookByTitle_Handler,
+		},
+		{
+			MethodName: "GetCourseBookByTitle",
+			Handler:    _Books_GetCourseBookByTitle_Handler,
+		},
+		{
+			MethodName: "GetListOfCourseBooksBySubjectAndGrade",
+			Handler:    _Books_GetListOfCourseBooksBySubjectAndGrade_Handler,
 		},
 		{
 			MethodName: "DeleteBook",

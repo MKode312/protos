@@ -8,12 +8,18 @@ option go_package = "mkode.books.v1;booksv1";
 service Books {
     //Add book to storage
     rpc AddBook(AddBookRequest) returns (AddBookResponse);
+    //Add new course book to storage
+    rpc AddCourseBook(AddCourseBookRequest) returns (AddCourseBookResponse);
     //Take some copies of the book from the storage
     rpc TakeBook(TakeBookRequest) returns (TakeBookResponse);
     //Get book by it's id (uuid)
     rpc GetBookByID(GetBookByIDRequest) returns (GetBookByIDResponse);
     //Get book by it's title
     rpc GetBookByTitle(GetBookByTitleRequest) returns (GetBookByTitleResponse);
+    //Get course book by it's title, grade and author
+    rpc GetCourseBookByTitle(GetCourseBookByTitleRequest) returns (GetCourseBookByTitleResponse);
+    //Get list of course books by subject and grade
+    rpc GetListOfCourseBooksBySubjectAndGrade(GetListOfCourseBooksBySubjectAndGradeRequest) returns (GetListOfCourseBooksBySubjectAndGradeResponse);
     //Delete book by it's id
     rpc DeleteBook(DeleteBookRequest) returns (DeleteBookResponse);
     //Add some copies to the existing book
@@ -28,12 +34,28 @@ service Books {
 message AddBookRequest {
     string genre = 1;
     string title = 2;
-    int64 quantity = 3;
+    string author = 3;
+    int64 quantity = 4;
 }
 message AddBookResponse {
     string book_id = 1;
 }
 //-----Add Book-----//
+
+
+//-----Add Course Book-----//
+message AddCourseBookRequest {
+    string subject = 1;
+    string title = 2;
+    string author = 3;
+    int32 grade = 4;
+    int64 quantity = 5;
+}
+
+message AddCourseBookResponse {
+    string book_id = 1;
+}
+//-----Add Course Book-----//
 
 
 
@@ -60,6 +82,20 @@ message GetBookByTitleResponse {
 
 
 
+//-----Get Course Book By Title-----//
+message GetCourseBookByTitleRequest {
+    string subject = 1;
+    string title = 2;
+    string author = 3;
+    int32 grade = 4;
+}
+
+message GetCourseBookByTitleResponse {
+    CourseBook book = 1;
+}
+//-----Get Course Book By Title-----//
+
+
 //-----Get Book By ID-----//
 message GetBookByIDRequest {
     string book_id = 1;
@@ -68,6 +104,17 @@ message GetBookByIDResponse {
     Book book = 1;
 }
 //-----Get Book By ID-----//
+
+
+
+message GetListOfCourseBooksBySubjectAndGradeRequest {
+    string subject = 1;
+    int32 grade = 2;
+}
+
+message GetListOfCourseBooksBySubjectAndGradeResponse {
+    repeated CourseBook books = 1;
+}
 
 
 
@@ -117,8 +164,20 @@ message FilterBooksByGenreListResponse {
 message Book {
     string title = 1;
     string genre = 2;
-    int64 available_copies = 3;
-    string id = 4;
+    string author = 3;
+    int64 available_copies = 4;
+    string id = 5;
 }
 //-----Book-----//
+
+//-----Course Book-----//
+message CourseBook {
+    string title = 1;
+    string subject = 2;
+    string author = 3;
+    int32 grade = 4;
+    int64 available_copies = 5;
+    string id = 6;
+}
+//-----Course Book-----//
 

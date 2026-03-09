@@ -26,7 +26,8 @@ type AddBookRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Genre         string                 `protobuf:"bytes,1,opt,name=genre,proto3" json:"genre,omitempty"`
 	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
-	Quantity      int64                  `protobuf:"varint,3,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	Author        string                 `protobuf:"bytes,3,opt,name=author,proto3" json:"author,omitempty"`
+	Quantity      int64                  `protobuf:"varint,4,opt,name=quantity,proto3" json:"quantity,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -71,6 +72,13 @@ func (x *AddBookRequest) GetGenre() string {
 func (x *AddBookRequest) GetTitle() string {
 	if x != nil {
 		return x.Title
+	}
+	return ""
+}
+
+func (x *AddBookRequest) GetAuthor() string {
+	if x != nil {
+		return x.Author
 	}
 	return ""
 }
@@ -126,6 +134,127 @@ func (x *AddBookResponse) GetBookId() string {
 	return ""
 }
 
+// -----Add Course Book-----//
+type AddCourseBookRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Subject       string                 `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Author        string                 `protobuf:"bytes,3,opt,name=author,proto3" json:"author,omitempty"`
+	Grade         int32                  `protobuf:"varint,4,opt,name=grade,proto3" json:"grade,omitempty"`
+	Quantity      int64                  `protobuf:"varint,5,opt,name=quantity,proto3" json:"quantity,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddCourseBookRequest) Reset() {
+	*x = AddCourseBookRequest{}
+	mi := &file_LibAssistant_books_books_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddCourseBookRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddCourseBookRequest) ProtoMessage() {}
+
+func (x *AddCourseBookRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_books_books_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddCourseBookRequest.ProtoReflect.Descriptor instead.
+func (*AddCourseBookRequest) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AddCourseBookRequest) GetSubject() string {
+	if x != nil {
+		return x.Subject
+	}
+	return ""
+}
+
+func (x *AddCourseBookRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *AddCourseBookRequest) GetAuthor() string {
+	if x != nil {
+		return x.Author
+	}
+	return ""
+}
+
+func (x *AddCourseBookRequest) GetGrade() int32 {
+	if x != nil {
+		return x.Grade
+	}
+	return 0
+}
+
+func (x *AddCourseBookRequest) GetQuantity() int64 {
+	if x != nil {
+		return x.Quantity
+	}
+	return 0
+}
+
+type AddCourseBookResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BookId        string                 `protobuf:"bytes,1,opt,name=book_id,json=bookId,proto3" json:"book_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddCourseBookResponse) Reset() {
+	*x = AddCourseBookResponse{}
+	mi := &file_LibAssistant_books_books_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddCourseBookResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddCourseBookResponse) ProtoMessage() {}
+
+func (x *AddCourseBookResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_books_books_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddCourseBookResponse.ProtoReflect.Descriptor instead.
+func (*AddCourseBookResponse) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AddCourseBookResponse) GetBookId() string {
+	if x != nil {
+		return x.BookId
+	}
+	return ""
+}
+
 // -----Take Book-----//
 type TakeBookRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -137,7 +266,7 @@ type TakeBookRequest struct {
 
 func (x *TakeBookRequest) Reset() {
 	*x = TakeBookRequest{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[2]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -149,7 +278,7 @@ func (x *TakeBookRequest) String() string {
 func (*TakeBookRequest) ProtoMessage() {}
 
 func (x *TakeBookRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[2]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,7 +291,7 @@ func (x *TakeBookRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TakeBookRequest.ProtoReflect.Descriptor instead.
 func (*TakeBookRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{2}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *TakeBookRequest) GetBookId() string {
@@ -188,7 +317,7 @@ type TakeBookResponse struct {
 
 func (x *TakeBookResponse) Reset() {
 	*x = TakeBookResponse{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[3]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -200,7 +329,7 @@ func (x *TakeBookResponse) String() string {
 func (*TakeBookResponse) ProtoMessage() {}
 
 func (x *TakeBookResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[3]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -213,7 +342,7 @@ func (x *TakeBookResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TakeBookResponse.ProtoReflect.Descriptor instead.
 func (*TakeBookResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{3}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *TakeBookResponse) GetSuccess() bool {
@@ -233,7 +362,7 @@ type GetBookByTitleRequest struct {
 
 func (x *GetBookByTitleRequest) Reset() {
 	*x = GetBookByTitleRequest{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[4]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -245,7 +374,7 @@ func (x *GetBookByTitleRequest) String() string {
 func (*GetBookByTitleRequest) ProtoMessage() {}
 
 func (x *GetBookByTitleRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[4]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -258,7 +387,7 @@ func (x *GetBookByTitleRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBookByTitleRequest.ProtoReflect.Descriptor instead.
 func (*GetBookByTitleRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{4}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *GetBookByTitleRequest) GetTitle() string {
@@ -277,7 +406,7 @@ type GetBookByTitleResponse struct {
 
 func (x *GetBookByTitleResponse) Reset() {
 	*x = GetBookByTitleResponse{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[5]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -289,7 +418,7 @@ func (x *GetBookByTitleResponse) String() string {
 func (*GetBookByTitleResponse) ProtoMessage() {}
 
 func (x *GetBookByTitleResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[5]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -302,10 +431,123 @@ func (x *GetBookByTitleResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBookByTitleResponse.ProtoReflect.Descriptor instead.
 func (*GetBookByTitleResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{5}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *GetBookByTitleResponse) GetBook() *Book {
+	if x != nil {
+		return x.Book
+	}
+	return nil
+}
+
+// -----Get Course Book By Title-----//
+type GetCourseBookByTitleRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Subject       string                 `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	Title         string                 `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty"`
+	Author        string                 `protobuf:"bytes,3,opt,name=author,proto3" json:"author,omitempty"`
+	Grade         int32                  `protobuf:"varint,4,opt,name=grade,proto3" json:"grade,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCourseBookByTitleRequest) Reset() {
+	*x = GetCourseBookByTitleRequest{}
+	mi := &file_LibAssistant_books_books_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCourseBookByTitleRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCourseBookByTitleRequest) ProtoMessage() {}
+
+func (x *GetCourseBookByTitleRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_books_books_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCourseBookByTitleRequest.ProtoReflect.Descriptor instead.
+func (*GetCourseBookByTitleRequest) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *GetCourseBookByTitleRequest) GetSubject() string {
+	if x != nil {
+		return x.Subject
+	}
+	return ""
+}
+
+func (x *GetCourseBookByTitleRequest) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *GetCourseBookByTitleRequest) GetAuthor() string {
+	if x != nil {
+		return x.Author
+	}
+	return ""
+}
+
+func (x *GetCourseBookByTitleRequest) GetGrade() int32 {
+	if x != nil {
+		return x.Grade
+	}
+	return 0
+}
+
+type GetCourseBookByTitleResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Book          *CourseBook            `protobuf:"bytes,1,opt,name=book,proto3" json:"book,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetCourseBookByTitleResponse) Reset() {
+	*x = GetCourseBookByTitleResponse{}
+	mi := &file_LibAssistant_books_books_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetCourseBookByTitleResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetCourseBookByTitleResponse) ProtoMessage() {}
+
+func (x *GetCourseBookByTitleResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_books_books_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetCourseBookByTitleResponse.ProtoReflect.Descriptor instead.
+func (*GetCourseBookByTitleResponse) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetCourseBookByTitleResponse) GetBook() *CourseBook {
 	if x != nil {
 		return x.Book
 	}
@@ -322,7 +564,7 @@ type GetBookByIDRequest struct {
 
 func (x *GetBookByIDRequest) Reset() {
 	*x = GetBookByIDRequest{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[6]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -334,7 +576,7 @@ func (x *GetBookByIDRequest) String() string {
 func (*GetBookByIDRequest) ProtoMessage() {}
 
 func (x *GetBookByIDRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[6]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -347,7 +589,7 @@ func (x *GetBookByIDRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBookByIDRequest.ProtoReflect.Descriptor instead.
 func (*GetBookByIDRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{6}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetBookByIDRequest) GetBookId() string {
@@ -366,7 +608,7 @@ type GetBookByIDResponse struct {
 
 func (x *GetBookByIDResponse) Reset() {
 	*x = GetBookByIDResponse{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[7]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -378,7 +620,7 @@ func (x *GetBookByIDResponse) String() string {
 func (*GetBookByIDResponse) ProtoMessage() {}
 
 func (x *GetBookByIDResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[7]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -391,12 +633,108 @@ func (x *GetBookByIDResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetBookByIDResponse.ProtoReflect.Descriptor instead.
 func (*GetBookByIDResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{7}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *GetBookByIDResponse) GetBook() *Book {
 	if x != nil {
 		return x.Book
+	}
+	return nil
+}
+
+type GetListOfCourseBooksBySubjectAndGradeRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Subject       string                 `protobuf:"bytes,1,opt,name=subject,proto3" json:"subject,omitempty"`
+	Grade         int32                  `protobuf:"varint,2,opt,name=grade,proto3" json:"grade,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetListOfCourseBooksBySubjectAndGradeRequest) Reset() {
+	*x = GetListOfCourseBooksBySubjectAndGradeRequest{}
+	mi := &file_LibAssistant_books_books_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetListOfCourseBooksBySubjectAndGradeRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetListOfCourseBooksBySubjectAndGradeRequest) ProtoMessage() {}
+
+func (x *GetListOfCourseBooksBySubjectAndGradeRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_books_books_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetListOfCourseBooksBySubjectAndGradeRequest.ProtoReflect.Descriptor instead.
+func (*GetListOfCourseBooksBySubjectAndGradeRequest) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *GetListOfCourseBooksBySubjectAndGradeRequest) GetSubject() string {
+	if x != nil {
+		return x.Subject
+	}
+	return ""
+}
+
+func (x *GetListOfCourseBooksBySubjectAndGradeRequest) GetGrade() int32 {
+	if x != nil {
+		return x.Grade
+	}
+	return 0
+}
+
+type GetListOfCourseBooksBySubjectAndGradeResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Books         []*CourseBook          `protobuf:"bytes,1,rep,name=books,proto3" json:"books,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetListOfCourseBooksBySubjectAndGradeResponse) Reset() {
+	*x = GetListOfCourseBooksBySubjectAndGradeResponse{}
+	mi := &file_LibAssistant_books_books_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetListOfCourseBooksBySubjectAndGradeResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetListOfCourseBooksBySubjectAndGradeResponse) ProtoMessage() {}
+
+func (x *GetListOfCourseBooksBySubjectAndGradeResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_books_books_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetListOfCourseBooksBySubjectAndGradeResponse.ProtoReflect.Descriptor instead.
+func (*GetListOfCourseBooksBySubjectAndGradeResponse) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *GetListOfCourseBooksBySubjectAndGradeResponse) GetBooks() []*CourseBook {
+	if x != nil {
+		return x.Books
 	}
 	return nil
 }
@@ -411,7 +749,7 @@ type DeleteBookRequest struct {
 
 func (x *DeleteBookRequest) Reset() {
 	*x = DeleteBookRequest{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[8]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -423,7 +761,7 @@ func (x *DeleteBookRequest) String() string {
 func (*DeleteBookRequest) ProtoMessage() {}
 
 func (x *DeleteBookRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[8]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -436,7 +774,7 @@ func (x *DeleteBookRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBookRequest.ProtoReflect.Descriptor instead.
 func (*DeleteBookRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{8}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *DeleteBookRequest) GetBookId() string {
@@ -455,7 +793,7 @@ type DeleteBookResponse struct {
 
 func (x *DeleteBookResponse) Reset() {
 	*x = DeleteBookResponse{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[9]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -467,7 +805,7 @@ func (x *DeleteBookResponse) String() string {
 func (*DeleteBookResponse) ProtoMessage() {}
 
 func (x *DeleteBookResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[9]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -480,7 +818,7 @@ func (x *DeleteBookResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DeleteBookResponse.ProtoReflect.Descriptor instead.
 func (*DeleteBookResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{9}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DeleteBookResponse) GetSuccess() bool {
@@ -501,7 +839,7 @@ type AddCopiesRequest struct {
 
 func (x *AddCopiesRequest) Reset() {
 	*x = AddCopiesRequest{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[10]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -513,7 +851,7 @@ func (x *AddCopiesRequest) String() string {
 func (*AddCopiesRequest) ProtoMessage() {}
 
 func (x *AddCopiesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[10]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -526,7 +864,7 @@ func (x *AddCopiesRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddCopiesRequest.ProtoReflect.Descriptor instead.
 func (*AddCopiesRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{10}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *AddCopiesRequest) GetBookId() string {
@@ -552,7 +890,7 @@ type AddCopiesResponse struct {
 
 func (x *AddCopiesResponse) Reset() {
 	*x = AddCopiesResponse{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[11]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -564,7 +902,7 @@ func (x *AddCopiesResponse) String() string {
 func (*AddCopiesResponse) ProtoMessage() {}
 
 func (x *AddCopiesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[11]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -577,7 +915,7 @@ func (x *AddCopiesResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddCopiesResponse.ProtoReflect.Descriptor instead.
 func (*AddCopiesResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{11}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *AddCopiesResponse) GetSuccess() bool {
@@ -596,7 +934,7 @@ type GetListOfBooksRequest struct {
 
 func (x *GetListOfBooksRequest) Reset() {
 	*x = GetListOfBooksRequest{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[12]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -608,7 +946,7 @@ func (x *GetListOfBooksRequest) String() string {
 func (*GetListOfBooksRequest) ProtoMessage() {}
 
 func (x *GetListOfBooksRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[12]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -621,7 +959,7 @@ func (x *GetListOfBooksRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetListOfBooksRequest.ProtoReflect.Descriptor instead.
 func (*GetListOfBooksRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{12}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{18}
 }
 
 type GetListOfBooksResponse struct {
@@ -633,7 +971,7 @@ type GetListOfBooksResponse struct {
 
 func (x *GetListOfBooksResponse) Reset() {
 	*x = GetListOfBooksResponse{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[13]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -645,7 +983,7 @@ func (x *GetListOfBooksResponse) String() string {
 func (*GetListOfBooksResponse) ProtoMessage() {}
 
 func (x *GetListOfBooksResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[13]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -658,7 +996,7 @@ func (x *GetListOfBooksResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetListOfBooksResponse.ProtoReflect.Descriptor instead.
 func (*GetListOfBooksResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{13}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *GetListOfBooksResponse) GetBooks() []*Book {
@@ -678,7 +1016,7 @@ type FilterBooksByGenreListRequest struct {
 
 func (x *FilterBooksByGenreListRequest) Reset() {
 	*x = FilterBooksByGenreListRequest{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[14]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -690,7 +1028,7 @@ func (x *FilterBooksByGenreListRequest) String() string {
 func (*FilterBooksByGenreListRequest) ProtoMessage() {}
 
 func (x *FilterBooksByGenreListRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[14]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -703,7 +1041,7 @@ func (x *FilterBooksByGenreListRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterBooksByGenreListRequest.ProtoReflect.Descriptor instead.
 func (*FilterBooksByGenreListRequest) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{14}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *FilterBooksByGenreListRequest) GetGenre() string {
@@ -722,7 +1060,7 @@ type FilterBooksByGenreListResponse struct {
 
 func (x *FilterBooksByGenreListResponse) Reset() {
 	*x = FilterBooksByGenreListResponse{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[15]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -734,7 +1072,7 @@ func (x *FilterBooksByGenreListResponse) String() string {
 func (*FilterBooksByGenreListResponse) ProtoMessage() {}
 
 func (x *FilterBooksByGenreListResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[15]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -747,7 +1085,7 @@ func (x *FilterBooksByGenreListResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FilterBooksByGenreListResponse.ProtoReflect.Descriptor instead.
 func (*FilterBooksByGenreListResponse) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{15}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *FilterBooksByGenreListResponse) GetFilteredBooks() []*Book {
@@ -762,15 +1100,16 @@ type Book struct {
 	state           protoimpl.MessageState `protogen:"open.v1"`
 	Title           string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	Genre           string                 `protobuf:"bytes,2,opt,name=genre,proto3" json:"genre,omitempty"`
-	AvailableCopies int64                  `protobuf:"varint,3,opt,name=available_copies,json=availableCopies,proto3" json:"available_copies,omitempty"`
-	ID              string                 `protobuf:"bytes,4,opt,name=ID,proto3" json:"ID,omitempty"`
+	Author          string                 `protobuf:"bytes,3,opt,name=author,proto3" json:"author,omitempty"`
+	AvailableCopies int64                  `protobuf:"varint,4,opt,name=available_copies,json=availableCopies,proto3" json:"available_copies,omitempty"`
+	Id              string                 `protobuf:"bytes,5,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields   protoimpl.UnknownFields
 	sizeCache       protoimpl.SizeCache
 }
 
 func (x *Book) Reset() {
 	*x = Book{}
-	mi := &file_LibAssistant_books_books_proto_msgTypes[16]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -782,7 +1121,7 @@ func (x *Book) String() string {
 func (*Book) ProtoMessage() {}
 
 func (x *Book) ProtoReflect() protoreflect.Message {
-	mi := &file_LibAssistant_books_books_proto_msgTypes[16]
+	mi := &file_LibAssistant_books_books_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -795,7 +1134,7 @@ func (x *Book) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Book.ProtoReflect.Descriptor instead.
 func (*Book) Descriptor() ([]byte, []int) {
-	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{16}
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *Book) GetTitle() string {
@@ -812,6 +1151,13 @@ func (x *Book) GetGenre() string {
 	return ""
 }
 
+func (x *Book) GetAuthor() string {
+	if x != nil {
+		return x.Author
+	}
+	return ""
+}
+
 func (x *Book) GetAvailableCopies() int64 {
 	if x != nil {
 		return x.AvailableCopies
@@ -819,9 +1165,94 @@ func (x *Book) GetAvailableCopies() int64 {
 	return 0
 }
 
-func (x *Book) GetID() string {
+func (x *Book) GetId() string {
 	if x != nil {
-		return x.ID
+		return x.Id
+	}
+	return ""
+}
+
+// -----Course Book-----//
+type CourseBook struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Title           string                 `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Subject         string                 `protobuf:"bytes,2,opt,name=subject,proto3" json:"subject,omitempty"`
+	Author          string                 `protobuf:"bytes,3,opt,name=author,proto3" json:"author,omitempty"`
+	Grade           int32                  `protobuf:"varint,4,opt,name=grade,proto3" json:"grade,omitempty"`
+	AvailableCopies int64                  `protobuf:"varint,5,opt,name=available_copies,json=availableCopies,proto3" json:"available_copies,omitempty"`
+	Id              string                 `protobuf:"bytes,6,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CourseBook) Reset() {
+	*x = CourseBook{}
+	mi := &file_LibAssistant_books_books_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CourseBook) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CourseBook) ProtoMessage() {}
+
+func (x *CourseBook) ProtoReflect() protoreflect.Message {
+	mi := &file_LibAssistant_books_books_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CourseBook.ProtoReflect.Descriptor instead.
+func (*CourseBook) Descriptor() ([]byte, []int) {
+	return file_LibAssistant_books_books_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *CourseBook) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *CourseBook) GetSubject() string {
+	if x != nil {
+		return x.Subject
+	}
+	return ""
+}
+
+func (x *CourseBook) GetAuthor() string {
+	if x != nil {
+		return x.Author
+	}
+	return ""
+}
+
+func (x *CourseBook) GetGrade() int32 {
+	if x != nil {
+		return x.Grade
+	}
+	return 0
+}
+
+func (x *CourseBook) GetAvailableCopies() int64 {
+	if x != nil {
+		return x.AvailableCopies
+	}
+	return 0
+}
+
+func (x *CourseBook) GetId() string {
+	if x != nil {
+		return x.Id
 	}
 	return ""
 }
@@ -830,12 +1261,21 @@ var File_LibAssistant_books_books_proto protoreflect.FileDescriptor
 
 const file_LibAssistant_books_books_proto_rawDesc = "" +
 	"\n" +
-	"\x1eLibAssistant/books/books.proto\x12\x05books\"X\n" +
+	"\x1eLibAssistant/books/books.proto\x12\x05books\"p\n" +
 	"\x0eAddBookRequest\x12\x14\n" +
 	"\x05genre\x18\x01 \x01(\tR\x05genre\x12\x14\n" +
-	"\x05title\x18\x02 \x01(\tR\x05title\x12\x1a\n" +
-	"\bquantity\x18\x03 \x01(\x03R\bquantity\"*\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
+	"\x06author\x18\x03 \x01(\tR\x06author\x12\x1a\n" +
+	"\bquantity\x18\x04 \x01(\x03R\bquantity\"*\n" +
 	"\x0fAddBookResponse\x12\x17\n" +
+	"\abook_id\x18\x01 \x01(\tR\x06bookId\"\x90\x01\n" +
+	"\x14AddCourseBookRequest\x12\x18\n" +
+	"\asubject\x18\x01 \x01(\tR\asubject\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
+	"\x06author\x18\x03 \x01(\tR\x06author\x12\x14\n" +
+	"\x05grade\x18\x04 \x01(\x05R\x05grade\x12\x1a\n" +
+	"\bquantity\x18\x05 \x01(\x03R\bquantity\"0\n" +
+	"\x15AddCourseBookResponse\x12\x17\n" +
 	"\abook_id\x18\x01 \x01(\tR\x06bookId\"K\n" +
 	"\x0fTakeBookRequest\x12\x17\n" +
 	"\abook_id\x18\x01 \x01(\tR\x06bookId\x12\x1f\n" +
@@ -846,11 +1286,23 @@ const file_LibAssistant_books_books_proto_rawDesc = "" +
 	"\x15GetBookByTitleRequest\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\"9\n" +
 	"\x16GetBookByTitleResponse\x12\x1f\n" +
-	"\x04book\x18\x01 \x01(\v2\v.books.BookR\x04book\"-\n" +
+	"\x04book\x18\x01 \x01(\v2\v.books.BookR\x04book\"{\n" +
+	"\x1bGetCourseBookByTitleRequest\x12\x18\n" +
+	"\asubject\x18\x01 \x01(\tR\asubject\x12\x14\n" +
+	"\x05title\x18\x02 \x01(\tR\x05title\x12\x16\n" +
+	"\x06author\x18\x03 \x01(\tR\x06author\x12\x14\n" +
+	"\x05grade\x18\x04 \x01(\x05R\x05grade\"E\n" +
+	"\x1cGetCourseBookByTitleResponse\x12%\n" +
+	"\x04book\x18\x01 \x01(\v2\x11.books.CourseBookR\x04book\"-\n" +
 	"\x12GetBookByIDRequest\x12\x17\n" +
 	"\abook_id\x18\x01 \x01(\tR\x06bookId\"6\n" +
 	"\x13GetBookByIDResponse\x12\x1f\n" +
-	"\x04book\x18\x01 \x01(\v2\v.books.BookR\x04book\",\n" +
+	"\x04book\x18\x01 \x01(\v2\v.books.BookR\x04book\"^\n" +
+	",GetListOfCourseBooksBySubjectAndGradeRequest\x12\x18\n" +
+	"\asubject\x18\x01 \x01(\tR\asubject\x12\x14\n" +
+	"\x05grade\x18\x02 \x01(\x05R\x05grade\"X\n" +
+	"-GetListOfCourseBooksBySubjectAndGradeResponse\x12'\n" +
+	"\x05books\x18\x01 \x03(\v2\x11.books.CourseBookR\x05books\",\n" +
 	"\x11DeleteBookRequest\x12\x17\n" +
 	"\abook_id\x18\x01 \x01(\tR\x06bookId\".\n" +
 	"\x12DeleteBookResponse\x12\x18\n" +
@@ -866,17 +1318,29 @@ const file_LibAssistant_books_books_proto_rawDesc = "" +
 	"\x1dFilterBooksByGenreListRequest\x12\x14\n" +
 	"\x05genre\x18\x01 \x01(\tR\x05genre\"T\n" +
 	"\x1eFilterBooksByGenreListResponse\x122\n" +
-	"\x0efiltered_books\x18\x01 \x03(\v2\v.books.BookR\rfilteredBooks\"m\n" +
+	"\x0efiltered_books\x18\x01 \x03(\v2\v.books.BookR\rfilteredBooks\"\x85\x01\n" +
 	"\x04Book\x12\x14\n" +
 	"\x05title\x18\x01 \x01(\tR\x05title\x12\x14\n" +
-	"\x05genre\x18\x02 \x01(\tR\x05genre\x12)\n" +
-	"\x10available_copies\x18\x03 \x01(\x03R\x0favailableCopies\x12\x0e\n" +
-	"\x02ID\x18\x04 \x01(\tR\x02ID2\xcc\x04\n" +
+	"\x05genre\x18\x02 \x01(\tR\x05genre\x12\x16\n" +
+	"\x06author\x18\x03 \x01(\tR\x06author\x12)\n" +
+	"\x10available_copies\x18\x04 \x01(\x03R\x0favailableCopies\x12\x0e\n" +
+	"\x02id\x18\x05 \x01(\tR\x02id\"\xa5\x01\n" +
+	"\n" +
+	"CourseBook\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12\x18\n" +
+	"\asubject\x18\x02 \x01(\tR\asubject\x12\x16\n" +
+	"\x06author\x18\x03 \x01(\tR\x06author\x12\x14\n" +
+	"\x05grade\x18\x04 \x01(\x05R\x05grade\x12)\n" +
+	"\x10available_copies\x18\x05 \x01(\x03R\x0favailableCopies\x12\x0e\n" +
+	"\x02id\x18\x06 \x01(\tR\x02id2\x8e\a\n" +
 	"\x05Books\x128\n" +
-	"\aAddBook\x12\x15.books.AddBookRequest\x1a\x16.books.AddBookResponse\x12;\n" +
+	"\aAddBook\x12\x15.books.AddBookRequest\x1a\x16.books.AddBookResponse\x12J\n" +
+	"\rAddCourseBook\x12\x1b.books.AddCourseBookRequest\x1a\x1c.books.AddCourseBookResponse\x12;\n" +
 	"\bTakeBook\x12\x16.books.TakeBookRequest\x1a\x17.books.TakeBookResponse\x12D\n" +
 	"\vGetBookByID\x12\x19.books.GetBookByIDRequest\x1a\x1a.books.GetBookByIDResponse\x12M\n" +
-	"\x0eGetBookByTitle\x12\x1c.books.GetBookByTitleRequest\x1a\x1d.books.GetBookByTitleResponse\x12A\n" +
+	"\x0eGetBookByTitle\x12\x1c.books.GetBookByTitleRequest\x1a\x1d.books.GetBookByTitleResponse\x12_\n" +
+	"\x14GetCourseBookByTitle\x12\".books.GetCourseBookByTitleRequest\x1a#.books.GetCourseBookByTitleResponse\x12\x92\x01\n" +
+	"%GetListOfCourseBooksBySubjectAndGrade\x123.books.GetListOfCourseBooksBySubjectAndGradeRequest\x1a4.books.GetListOfCourseBooksBySubjectAndGradeResponse\x12A\n" +
 	"\n" +
 	"DeleteBook\x12\x18.books.DeleteBookRequest\x1a\x19.books.DeleteBookResponse\x12>\n" +
 	"\tAddCopies\x12\x17.books.AddCopiesRequest\x1a\x18.books.AddCopiesResponse\x12M\n" +
@@ -895,52 +1359,67 @@ func file_LibAssistant_books_books_proto_rawDescGZIP() []byte {
 	return file_LibAssistant_books_books_proto_rawDescData
 }
 
-var file_LibAssistant_books_books_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_LibAssistant_books_books_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
 var file_LibAssistant_books_books_proto_goTypes = []any{
-	(*AddBookRequest)(nil),                 // 0: books.AddBookRequest
-	(*AddBookResponse)(nil),                // 1: books.AddBookResponse
-	(*TakeBookRequest)(nil),                // 2: books.TakeBookRequest
-	(*TakeBookResponse)(nil),               // 3: books.TakeBookResponse
-	(*GetBookByTitleRequest)(nil),          // 4: books.GetBookByTitleRequest
-	(*GetBookByTitleResponse)(nil),         // 5: books.GetBookByTitleResponse
-	(*GetBookByIDRequest)(nil),             // 6: books.GetBookByIDRequest
-	(*GetBookByIDResponse)(nil),            // 7: books.GetBookByIDResponse
-	(*DeleteBookRequest)(nil),              // 8: books.DeleteBookRequest
-	(*DeleteBookResponse)(nil),             // 9: books.DeleteBookResponse
-	(*AddCopiesRequest)(nil),               // 10: books.AddCopiesRequest
-	(*AddCopiesResponse)(nil),              // 11: books.AddCopiesResponse
-	(*GetListOfBooksRequest)(nil),          // 12: books.GetListOfBooksRequest
-	(*GetListOfBooksResponse)(nil),         // 13: books.GetListOfBooksResponse
-	(*FilterBooksByGenreListRequest)(nil),  // 14: books.FilterBooksByGenreListRequest
-	(*FilterBooksByGenreListResponse)(nil), // 15: books.FilterBooksByGenreListResponse
-	(*Book)(nil),                           // 16: books.Book
+	(*AddBookRequest)(nil),                                // 0: books.AddBookRequest
+	(*AddBookResponse)(nil),                               // 1: books.AddBookResponse
+	(*AddCourseBookRequest)(nil),                          // 2: books.AddCourseBookRequest
+	(*AddCourseBookResponse)(nil),                         // 3: books.AddCourseBookResponse
+	(*TakeBookRequest)(nil),                               // 4: books.TakeBookRequest
+	(*TakeBookResponse)(nil),                              // 5: books.TakeBookResponse
+	(*GetBookByTitleRequest)(nil),                         // 6: books.GetBookByTitleRequest
+	(*GetBookByTitleResponse)(nil),                        // 7: books.GetBookByTitleResponse
+	(*GetCourseBookByTitleRequest)(nil),                   // 8: books.GetCourseBookByTitleRequest
+	(*GetCourseBookByTitleResponse)(nil),                  // 9: books.GetCourseBookByTitleResponse
+	(*GetBookByIDRequest)(nil),                            // 10: books.GetBookByIDRequest
+	(*GetBookByIDResponse)(nil),                           // 11: books.GetBookByIDResponse
+	(*GetListOfCourseBooksBySubjectAndGradeRequest)(nil),  // 12: books.GetListOfCourseBooksBySubjectAndGradeRequest
+	(*GetListOfCourseBooksBySubjectAndGradeResponse)(nil), // 13: books.GetListOfCourseBooksBySubjectAndGradeResponse
+	(*DeleteBookRequest)(nil),                             // 14: books.DeleteBookRequest
+	(*DeleteBookResponse)(nil),                            // 15: books.DeleteBookResponse
+	(*AddCopiesRequest)(nil),                              // 16: books.AddCopiesRequest
+	(*AddCopiesResponse)(nil),                             // 17: books.AddCopiesResponse
+	(*GetListOfBooksRequest)(nil),                         // 18: books.GetListOfBooksRequest
+	(*GetListOfBooksResponse)(nil),                        // 19: books.GetListOfBooksResponse
+	(*FilterBooksByGenreListRequest)(nil),                 // 20: books.FilterBooksByGenreListRequest
+	(*FilterBooksByGenreListResponse)(nil),                // 21: books.FilterBooksByGenreListResponse
+	(*Book)(nil),                                          // 22: books.Book
+	(*CourseBook)(nil),                                    // 23: books.CourseBook
 }
 var file_LibAssistant_books_books_proto_depIdxs = []int32{
-	16, // 0: books.GetBookByTitleResponse.book:type_name -> books.Book
-	16, // 1: books.GetBookByIDResponse.book:type_name -> books.Book
-	16, // 2: books.GetListOfBooksResponse.books:type_name -> books.Book
-	16, // 3: books.FilterBooksByGenreListResponse.filtered_books:type_name -> books.Book
-	0,  // 4: books.Books.AddBook:input_type -> books.AddBookRequest
-	2,  // 5: books.Books.TakeBook:input_type -> books.TakeBookRequest
-	6,  // 6: books.Books.GetBookByID:input_type -> books.GetBookByIDRequest
-	4,  // 7: books.Books.GetBookByTitle:input_type -> books.GetBookByTitleRequest
-	8,  // 8: books.Books.DeleteBook:input_type -> books.DeleteBookRequest
-	10, // 9: books.Books.AddCopies:input_type -> books.AddCopiesRequest
-	12, // 10: books.Books.GetListOfBooks:input_type -> books.GetListOfBooksRequest
-	14, // 11: books.Books.FilterBooksByGenreList:input_type -> books.FilterBooksByGenreListRequest
-	1,  // 12: books.Books.AddBook:output_type -> books.AddBookResponse
-	3,  // 13: books.Books.TakeBook:output_type -> books.TakeBookResponse
-	7,  // 14: books.Books.GetBookByID:output_type -> books.GetBookByIDResponse
-	5,  // 15: books.Books.GetBookByTitle:output_type -> books.GetBookByTitleResponse
-	9,  // 16: books.Books.DeleteBook:output_type -> books.DeleteBookResponse
-	11, // 17: books.Books.AddCopies:output_type -> books.AddCopiesResponse
-	13, // 18: books.Books.GetListOfBooks:output_type -> books.GetListOfBooksResponse
-	15, // 19: books.Books.FilterBooksByGenreList:output_type -> books.FilterBooksByGenreListResponse
-	12, // [12:20] is the sub-list for method output_type
-	4,  // [4:12] is the sub-list for method input_type
-	4,  // [4:4] is the sub-list for extension type_name
-	4,  // [4:4] is the sub-list for extension extendee
-	0,  // [0:4] is the sub-list for field type_name
+	22, // 0: books.GetBookByTitleResponse.book:type_name -> books.Book
+	23, // 1: books.GetCourseBookByTitleResponse.book:type_name -> books.CourseBook
+	22, // 2: books.GetBookByIDResponse.book:type_name -> books.Book
+	23, // 3: books.GetListOfCourseBooksBySubjectAndGradeResponse.books:type_name -> books.CourseBook
+	22, // 4: books.GetListOfBooksResponse.books:type_name -> books.Book
+	22, // 5: books.FilterBooksByGenreListResponse.filtered_books:type_name -> books.Book
+	0,  // 6: books.Books.AddBook:input_type -> books.AddBookRequest
+	2,  // 7: books.Books.AddCourseBook:input_type -> books.AddCourseBookRequest
+	4,  // 8: books.Books.TakeBook:input_type -> books.TakeBookRequest
+	10, // 9: books.Books.GetBookByID:input_type -> books.GetBookByIDRequest
+	6,  // 10: books.Books.GetBookByTitle:input_type -> books.GetBookByTitleRequest
+	8,  // 11: books.Books.GetCourseBookByTitle:input_type -> books.GetCourseBookByTitleRequest
+	12, // 12: books.Books.GetListOfCourseBooksBySubjectAndGrade:input_type -> books.GetListOfCourseBooksBySubjectAndGradeRequest
+	14, // 13: books.Books.DeleteBook:input_type -> books.DeleteBookRequest
+	16, // 14: books.Books.AddCopies:input_type -> books.AddCopiesRequest
+	18, // 15: books.Books.GetListOfBooks:input_type -> books.GetListOfBooksRequest
+	20, // 16: books.Books.FilterBooksByGenreList:input_type -> books.FilterBooksByGenreListRequest
+	1,  // 17: books.Books.AddBook:output_type -> books.AddBookResponse
+	3,  // 18: books.Books.AddCourseBook:output_type -> books.AddCourseBookResponse
+	5,  // 19: books.Books.TakeBook:output_type -> books.TakeBookResponse
+	11, // 20: books.Books.GetBookByID:output_type -> books.GetBookByIDResponse
+	7,  // 21: books.Books.GetBookByTitle:output_type -> books.GetBookByTitleResponse
+	9,  // 22: books.Books.GetCourseBookByTitle:output_type -> books.GetCourseBookByTitleResponse
+	13, // 23: books.Books.GetListOfCourseBooksBySubjectAndGrade:output_type -> books.GetListOfCourseBooksBySubjectAndGradeResponse
+	15, // 24: books.Books.DeleteBook:output_type -> books.DeleteBookResponse
+	17, // 25: books.Books.AddCopies:output_type -> books.AddCopiesResponse
+	19, // 26: books.Books.GetListOfBooks:output_type -> books.GetListOfBooksResponse
+	21, // 27: books.Books.FilterBooksByGenreList:output_type -> books.FilterBooksByGenreListResponse
+	17, // [17:28] is the sub-list for method output_type
+	6,  // [6:17] is the sub-list for method input_type
+	6,  // [6:6] is the sub-list for extension type_name
+	6,  // [6:6] is the sub-list for extension extendee
+	0,  // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_LibAssistant_books_books_proto_init() }
@@ -954,7 +1433,7 @@ func file_LibAssistant_books_books_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_LibAssistant_books_books_proto_rawDesc), len(file_LibAssistant_books_books_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   17,
+			NumMessages:   24,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
